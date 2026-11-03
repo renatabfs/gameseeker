@@ -3,6 +3,8 @@
 Catálogo de jogos para você descobrir o próximo título: leia a sinopse, veja em quais plataformas ele roda e salve seus favoritos.
  
 Feito com **HTML, CSS e JavaScript puros**, sem frameworks e sem etapa de build.
+
+Site do Projeto: https://renatabfs.github.io/gameseeker/
  
 ## ✨ Funcionalidades
  
