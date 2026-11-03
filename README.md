@@ -38,18 +38,19 @@ Se preferir um servidor local (por exemplo, com a extensão Live Server do VS Co
  
 ## ➕ Como adicionar um jogo
  
-Abra o `script.js` e adicione um objeto na lista `G`:
+Abra o `games.json` e adicione um objeto na lista `G`:
  
-```js
+```json
 {
-  n: 'Nome do jogo',
-  y: 2024,                          // ano de lançamento
-  e: '🎮',                          // emoji de fallback
-  h: 200,                           // matiz (0–360) do gradiente da capa
-  t: ['Ação', 'Indie'],             // gêneros
-  p: ['PC', 'PlayStation'],         // plataformas
-  f: 1,                             // opcional: use apenas se o jogo for grátis
-  s: 'Sinopse curta do jogo.'
+  "n": "Nome do jogo",
+  "y": 2024,
+  "e": "🎮",
+  "h": 200,
+  "img": "img/nome-do-jogo.jpg",
+  "t": ["Ação", "Indie"],
+  "p": ["PC", "PlayStation"],
+  "s": "Sinopse curta do jogo.",
+  "f": "1" //se o jogo for gratuito, adicione "f:1"
 }
 ```
  
