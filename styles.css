@@ -358,6 +358,12 @@ footer {
   height: 100%;
   object-fit: cover
 }
+@media (min-width: 768px) {
+  .chips {
+    flex-wrap: wrap;
+    overflow-x: visible;
+  }
+}
 
 @media (prefers-reduced-motion: reduce) {
   * {
