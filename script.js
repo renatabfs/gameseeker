@@ -14,6 +14,7 @@ const G = [
     y: 2018,
     e: '🏔️',
     h: 320,
+    img: 'img/celeste.jpeg',
     t: ['Indie', 'Plataforma'],
     p: ['PC', 'PlayStation', 'Xbox', 'Switch'],
     s: 'Madeline escala a montanha Celeste enquanto enfrenta seus medos. Plataforma precisa, difícil e com uma história emocionante.',
