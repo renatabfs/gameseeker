@@ -1,334 +1,388 @@
 [
-    {
-      "n": "Minecraft",
-      "y": 2011,
-      "e": "⛏️",
-      "h": 140,
-      "img": "img/minecraft.jpg",
-      "t": [
-        "Sandbox",
-        "Aventura",
-        "Multiplayer"
-      ],
-      "p": [
-        "PC",
-        "PlayStation",
-        "Xbox",
-        "Switch",
-        "Celular"
-      ],
-      "s": "Um mundo infinito de blocos para explorar, minerar e construir. Sobreviva à noite ou crie o que a imaginação mandar, sozinho ou com amigos."
-    },
-    {
-      "n": "Celeste",
-      "y": 2018,
-      "e": "🏔️",
-      "h": 320,
-      "img": "img/celeste.jpg",
-      "t": [
-        "Indie",
-        "Plataforma"
-      ],
-      "p": [
-        "PC",
-        "PlayStation",
-        "Xbox",
-        "Switch"
-      ],
-      "s": "Madeline escala a montanha Celeste enquanto enfrenta seus medos. Plataforma precisa, difícil e com uma história emocionante."
-    },
-    {
-      "n": "Hollow Knight",
-      "y": 2017,
-      "e": "🦋",
-      "h": 230,
-      "img": "img/hollow-knight.jpg",
-      "t": [
-        "Indie",
-        "Aventura",
-        "Ação"
-      ],
-      "p": [
-        "PC",
-        "PlayStation",
-        "Xbox",
-        "Switch"
-      ],
-      "s": "Desça ao reino subterrâneo de Hallownest, um mapa enorme e interligado cheio de insetos, segredos e chefes desafiadores."
-    },
-    {
-      "n": "Stardew Valley",
-      "y": 2016,
-      "e": "🌾",
-      "h": 100,
-      "img": "img/stardew-valley.jpeg",
-      "t": [
-        "Indie",
-        "Simulação",
-        "RPG"
-      ],
-      "p": [
-        "PC",
-        "PlayStation",
-        "Xbox",
-        "Switch",
-        "Celular"
-      ],
-      "s": "Herde uma fazenda, plante, crie animais, pesque e faça amizade com a vila. Um jogo relaxante com muito para descobrir."
-    },
-    {
-      "n": "Hades",
-      "y": 2020,
-      "e": "🔥",
-      "h": 0,
-      "img": "img/hades.jpeg",
-      "t": [
-        "Indie",
-        "Ação",
-        "RPG"
-      ],
-      "p": [
-        "PC",
-        "PlayStation",
-        "Xbox",
-        "Switch"
-      ],
-      "s": "Zagreu tenta fugir do submundo grego em partidas roguelike rápidas e viciantes, com combate fluido e história que avança a cada tentativa."
-    },
-    {
-      "n": "The Witcher 3",
-      "y": 2015,
-      "e": "🐺",
-      "h": 200,
-      "img": "img/tw3.jpeg",
-      "t": [
-        "RPG",
-        "Mundo aberto"
-      ],
-      "p": [
-        "PC",
-        "PlayStation",
-        "Xbox",
-        "Switch"
-      ],
-      "s": "Geralt de Rívia caça monstros e procura sua filha adotiva em um mundo cheio de escolhas com consequências reais."
-    },
-    {
-      "n": "Fortnite",
-      "y": 2017,
-      "e": "🪂",
-      "h": 260,
-      "img": "img/fortnite.jpeg",
-      "t": [
-        "Multiplayer",
-        "Ação",
-        "Grátis"
-      ],
-      "p": [
-        "PC",
-        "PlayStation",
-        "Xbox",
-        "Switch"
-      ],
-      "f": 1,
-      "s": "Bata-bola com 99 jogadores, construa para ganhar vantagem e seja o último de pé. Eventos e atualizações constantes."
-    },
-    {
-      "n": "Zelda: Tears of the Kingdom",
-      "y": 2023,
-      "e": "🗡️",
-      "h": 150,
-      "img": "img/zelda-tok.jpeg",
-      "t": [
-        "Aventura",
-        "Mundo aberto"
-      ],
-      "p": [
-        "Switch"
-      ],
-      "s": "Link explora Hyrule e os céus, com poderes para construir engenhocas e manipular objetos. Liberdade total para resolver cada desafio do seu jeito."
-    },
-    {
-      "n": "Valorant",
-      "y": 2020,
-      "e": "🎯",
-      "h": 350,
-      "img": "img/valorant.jpeg",
-      "t": [
-        "Multiplayer",
-        "Tático",
-        "Grátis"
-      ],
-      "p": [
-        "PC"
-      ],
-      "f": 1,
-      "s": "Shooter tático 5 contra 5 com agentes que têm habilidades únicas. Mira afiada e trabalho em equipe decidem a rodada."
-    },
-    {
-      "n": "Elden Ring",
-      "y": 2022,
-      "e": "💍",
-      "h": 40,
-      "img": "img/elden-ring.jpeg",
-      "t": [
-        "RPG",
-        "Ação",
-        "Mundo aberto"
-      ],
-      "p": [
-        "PC",
-        "PlayStation",
-        "Xbox"
-      ],
-      "s": "Um vasto mundo de fantasia sombria criado pela FromSoftware, com liberdade de exploração e chefes brutais. Prepare-se para morrer (e aprender)."
-    },
-    {
-      "n": "League of Legends",
-      "y": 2009,
-      "e": "⚔️",
-      "h": 215,
-      "img": "img/league-of-legends.jpeg",
-      "t": [
-        "Multiplayer",
-        "Estratégia",
-        "Grátis"
-      ],
-      "p": [
-        "PC"
-      ],
-      "f": 1,
-      "s": "O MOBA mais famoso do mundo: dois times de cinco campeões lutam para destruir o Nexus inimigo. Fácil de começar, difícil de dominar."
-    },
-    {
-      "n": "Rocket League",
-      "y": 2015,
-      "e": "🚗",
-      "h": 25,
-      "img": "img/rocket-league.jpeg",
-      "t": [
-        "Multiplayer",
-        "Esporte",
-        "Grátis"
-      ],
-      "p": [
-        "PC",
-        "PlayStation",
-        "Xbox",
-        "Switch"
-      ],
-      "f": 1,
-      "s": "Futebol com carros turbinados. Partidas curtas, física divertida e muita jogada maluca no ar."
-    },
-    {
-      "n": "Among Us",
-      "y": 2018,
-      "e": "🚀",
-      "h": 5,
-      "img": "img/among-us.jpeg",
-      "t": [
-        "Multiplayer",
-        "Social",
-        "Indie"
-      ],
-      "p": [
-        "PC",
-        "PlayStation",
-        "Xbox",
-        "Switch",
-        "Celular"
-      ],
-      "s": "Tripulantes tentam consertar a nave enquanto impostores sabotam tudo. Converse, acuse e descubra quem está mentindo."
-    },
-    {
-      "n": "Terraria",
-      "y": 2011,
-      "e": "💎",
-      "h": 175,
-      "img": "img/terraria.jpeg",
-      "t": [
-        "Sandbox",
-        "Aventura",
-        "Indie"
-      ],
-      "p": [
-        "PC",
-        "PlayStation",
-        "Xbox",
-        "Switch",
-        "Celular"
-      ],
-      "s": "Cave, construa, lute contra chefes e explore um mundo 2D cheio de tesouros. Um clássico para jogar sozinho ou em grupo."
-    },
-    {
-      "n": "Cuphead",
-      "y": 2017,
-      "e": "☕",
-      "h": 45,
-      "img": "img/cuphead.jpeg",
-      "t": [
-        "Indie",
-        "Ação",
-        "Plataforma"
-      ],
-      "p": [
-        "PC",
-        "PlayStation",
-        "Xbox",
-        "Switch"
-      ],
-      "s": "Run and gun com visual de desenho animado dos anos 1930 e chefes muito difíceis. Cada derrota ensina um pouco mais."
-    },
-    {
-      "n": "God of War (2018)",
-      "y": 2018,
-      "e": "🪓",
-      "h": 15,
-      "img": "img/gow2018.jpeg",
-      "t": [
-        "Ação",
-        "Aventura"
-      ],
-      "p": [
-        "PC",
-        "PlayStation"
-      ],
-      "s": "Kratos e seu filho Atreus viajam pela mitologia nórdica em uma jornada intensa, com combate pesado e câmera sem cortes."
-    },
-    {
-      "n": "Red Dead Redemption 2",
-      "y": 2018,
-      "e": "🤠",
-      "h": 30,
-      "img": "img/rdr.jpeg",
-      "t": [
-        "Aventura",
-        "Mundo aberto",
-        "Ação"
-      ],
-      "p": [
-        "PC",
-        "PlayStation",
-        "Xbox"
-      ],
-      "s": "Arthur Morgan e a gangue Van der Linde tentam sobreviver no fim do Velho Oeste. Um mundo vivo e história épica."
-    },
-    {
-      "n": "Undertale",
-      "y": 2015,
-      "e": "💛",
-      "h": 50,
-      "img": "img/undertale.png",
-      "t": [
-        "Indie",
-        "RPG"
-      ],
-      "p": [
-        "PC",
-        "PlayStation",
-        "Xbox",
-        "Switch"
-      ],
-      "s": "Um RPG em que você pode vencer sem machucar ninguém. Humor, música marcante e escolhas que mudam o final."
-    }
-  ]
+  {
+    "n": "Detroit Become Human",
+    "y": 2018,
+    "h": 140,
+    "img": "img/detroit.jpeg",
+    "t": [
+      "Aventura",
+      "Drama",
+      "Ação",
+      "Interativo"
+    ],
+    "p": [
+      "PC",
+      "PlayStation",
+      "Xbox"
+    ],
+    "s": "O jogo se passa em 2036 na cidade de Detroit, que foi revitalizada pela invenção e o uso dos androides no nosso dia a dia. Porém, quando os androides começam a se comportar como se tivessem vida, as coisas começam a fugir do controle. Assuma o papel dos três protagonistas controláveis da história, cada um com suas próprias perspectivas, e enfrente esse novo estilo de vida.     Nessa narrativa emocionante e cheia de reviravoltas, cada escolha e ação não determinará apenas o futuro do personagem, mas também o de toda a cidade (e pode ter proporções ainda maiores)"
+  },
+  {
+    "n": "Life Is Strange",
+    "y": 2015,
+    "h": 140,
+    "img": "img/life-is-strange.jpeg",
+    "t": [
+      "Ação",
+      "Aventura",
+      "Interativo"
+    ],
+    "p": [
+      "PC",
+      "PlayStation",
+      "Xbox",
+      "Celular"
+    ],
+    "s": "Max Caulfield, uma estudante de fotografia de 18 anos, retorna à sua cidade natal, Arcadia Bay, para estudar na prestigiada Academia Blackwell. Ao reencontrar sua antiga amiga Chloe Price, Max descobre que possui a habilidade extraordinária de voltar no tempo. Quando as duas começam a investigar o misterioso desaparecimento de uma estudante, Rachel Amber, acabam descobrindo segredos sombrios que envolvem a cidade. Com o poder de alterar acontecimentos e consequências imprevisíveis, Max precisará lidar com escolhas difíceis que podem mudar não apenas sua vida, mas também o destino de todos ao seu redor."
+  },
+  {
+    "n": "Hollow Knight",
+    "y": 2017,
+    "e": "🦋",
+    "h": 230,
+    "img": "img/hollow-knight.jpg",
+    "t": [
+      "Indie",
+      "Aventura",
+      "Ação"
+    ],
+    "p": [
+      "PC",
+      "PlayStation",
+      "Xbox",
+      "Switch"
+    ],
+    "s": "Desça ao reino subterrâneo de Hallownest, um mapa enorme e interligado cheio de insetos, segredos e chefes desafiadores."
+  },
+  {
+    "n": "Minecraft",
+    "y": 2011,
+    "e": "⛏️",
+    "h": 140,
+    "img": "img/minecraft.jpg",
+    "t": [
+      "Sandbox",
+      "Aventura",
+      "Multiplayer"
+    ],
+    "p": [
+      "PC",
+      "PlayStation",
+      "Xbox",
+      "Switch",
+      "Celular"
+    ],
+    "s": "Um mundo infinito de blocos para explorar, minerar e construir. Sobreviva à noite ou crie o que a imaginação mandar, sozinho ou com amigos."
+  },
+  {
+    "n": "Far Cry 3",
+    "y": 2012,
+    "h": 150,
+    "img": "img/far-cry3.jpeg",
+    "t": [
+      "FPS",
+      "Ação",
+      "Aventura",
+      "Mundo aberto"
+    ],
+    "p": [
+      "PC",
+      "PlayStation",
+      "Xbox"
+    ],
+    "s": "Jason Brody está de férias em uma ilha tropical paradisíaca com seus amigos quando a viagem se transforma em um pesadelo. Após serem sequestrados por piratas liderados pelo perigoso e imprevisível Vaas Montenegro, Jason consegue escapar, mas seus amigos continuam em cativeiro. Perdido em uma ilha dominada pela violência, pelo tráfico e por conflitos entre facções, Jason precisa aprender a sobreviver, resgatar seus amigos e enfrentar seus próprios limites. Em meio a uma jornada de transformação, ele descobrirá que o paraíso pode esconder os piores horrores."
+  },
+  {
+    "n": "Celeste",
+    "y": 2018,
+    "e": "🏔️",
+    "h": 320,
+    "img": "img/celeste.jpg",
+    "t": [
+      "Indie",
+      "Plataforma"
+    ],
+    "p": [
+      "PC",
+      "PlayStation",
+      "Xbox",
+      "Switch"
+    ],
+    "s": "Madeline escala a montanha Celeste enquanto enfrenta seus medos. Plataforma precisa, difícil e com uma história emocionante."
+  },
+  {
+    "n": "Stardew Valley",
+    "y": 2016,
+    "e": "🌾",
+    "h": 100,
+    "img": "img/stardew-valley.jpeg",
+    "t": [
+      "Indie",
+      "Simulação",
+      "RPG"
+    ],
+    "p": [
+      "PC",
+      "PlayStation",
+      "Xbox",
+      "Switch",
+      "Celular"
+    ],
+    "s": "Herde uma fazenda, plante, crie animais, pesque e faça amizade com a vila. Um jogo relaxante com muito para descobrir."
+  },
+  {
+    "n": "Hades",
+    "y": 2020,
+    "e": "🔥",
+    "h": 0,
+    "img": "img/hades.jpeg",
+    "t": [
+      "Indie",
+      "Ação",
+      "RPG"
+    ],
+    "p": [
+      "PC",
+      "PlayStation",
+      "Xbox",
+      "Switch"
+    ],
+    "s": "Zagreu tenta fugir do submundo grego em partidas roguelike rápidas e viciantes, com combate fluido e história que avança a cada tentativa."
+  },
+  {
+    "n": "The Witcher 3",
+    "y": 2015,
+    "e": "🐺",
+    "h": 200,
+    "img": "img/tw3.jpeg",
+    "t": [
+      "RPG",
+      "Mundo aberto"
+    ],
+    "p": [
+      "PC",
+      "PlayStation",
+      "Xbox",
+      "Switch"
+    ],
+    "s": "Geralt de Rívia caça monstros e procura sua filha adotiva em um mundo cheio de escolhas com consequências reais."
+  },
+  {
+    "n": "Fortnite",
+    "y": 2017,
+    "e": "🪂",
+    "h": 260,
+    "img": "img/fortnite.jpeg",
+    "t": [
+      "Multiplayer",
+      "Ação",
+      "Grátis"
+    ],
+    "p": [
+      "PC",
+      "PlayStation",
+      "Xbox",
+      "Switch"
+    ],
+    "f": 1,
+    "s": "Bata-bola com 99 jogadores, construa para ganhar vantagem e seja o último de pé. Eventos e atualizações constantes."
+  },
+  {
+    "n": "Zelda: Tears of the Kingdom",
+    "y": 2023,
+    "e": "🗡️",
+    "h": 150,
+    "img": "img/zelda-tok.jpeg",
+    "t": [
+      "Aventura",
+      "Mundo aberto"
+    ],
+    "p": [
+      "Switch"
+    ],
+    "s": "Link explora Hyrule e os céus, com poderes para construir engenhocas e manipular objetos. Liberdade total para resolver cada desafio do seu jeito."
+  },
+  {
+    "n": "Valorant",
+    "y": 2020,
+    "e": "🎯",
+    "h": 350,
+    "img": "img/valorant.jpeg",
+    "t": [
+      "Multiplayer",
+      "Tático",
+      "Grátis"
+    ],
+    "p": [
+      "PC"
+    ],
+    "f": 1,
+    "s": "Shooter tático 5 contra 5 com agentes que têm habilidades únicas. Mira afiada e trabalho em equipe decidem a rodada."
+  },
+  {
+    "n": "Elden Ring",
+    "y": 2022,
+    "e": "💍",
+    "h": 40,
+    "img": "img/elden-ring.jpeg",
+    "t": [
+      "RPG",
+      "Ação",
+      "Mundo aberto"
+    ],
+    "p": [
+      "PC",
+      "PlayStation",
+      "Xbox"
+    ],
+    "s": "Um vasto mundo de fantasia sombria criado pela FromSoftware, com liberdade de exploração e chefes brutais. Prepare-se para morrer (e aprender)."
+  },
+  {
+    "n": "League of Legends",
+    "y": 2009,
+    "e": "⚔️",
+    "h": 215,
+    "img": "img/league-of-legends.jpeg",
+    "t": [
+      "Multiplayer",
+      "Estratégia",
+      "Grátis"
+    ],
+    "p": [
+      "PC"
+    ],
+    "f": 1,
+    "s": "O MOBA mais famoso do mundo: dois times de cinco campeões lutam para destruir o Nexus inimigo. Fácil de começar, difícil de dominar."
+  },
+  {
+    "n": "Rocket League",
+    "y": 2015,
+    "e": "🚗",
+    "h": 25,
+    "img": "img/rocket-league.jpeg",
+    "t": [
+      "Multiplayer",
+      "Esporte",
+      "Grátis"
+    ],
+    "p": [
+      "PC",
+      "PlayStation",
+      "Xbox",
+      "Switch"
+    ],
+    "f": 1,
+    "s": "Futebol com carros turbinados. Partidas curtas, física divertida e muita jogada maluca no ar."
+  },
+  {
+    "n": "Among Us",
+    "y": 2018,
+    "e": "🚀",
+    "h": 5,
+    "img": "img/among-us.jpeg",
+    "t": [
+      "Multiplayer",
+      "Social",
+      "Indie"
+    ],
+    "p": [
+      "PC",
+      "PlayStation",
+      "Xbox",
+      "Switch",
+      "Celular"
+    ],
+    "s": "Tripulantes tentam consertar a nave enquanto impostores sabotam tudo. Converse, acuse e descubra quem está mentindo."
+  },
+  {
+    "n": "Terraria",
+    "y": 2011,
+    "e": "💎",
+    "h": 175,
+    "img": "img/terraria.jpeg",
+    "t": [
+      "Sandbox",
+      "Aventura",
+      "Indie"
+    ],
+    "p": [
+      "PC",
+      "PlayStation",
+      "Xbox",
+      "Switch",
+      "Celular"
+    ],
+    "s": "Cave, construa, lute contra chefes e explore um mundo 2D cheio de tesouros. Um clássico para jogar sozinho ou em grupo."
+  },
+  {
+    "n": "Cuphead",
+    "y": 2017,
+    "e": "☕",
+    "h": 45,
+    "img": "img/cuphead.jpeg",
+    "t": [
+      "Indie",
+      "Ação",
+      "Plataforma"
+    ],
+    "p": [
+      "PC",
+      "PlayStation",
+      "Xbox",
+      "Switch"
+    ],
+    "s": "Run and gun com visual de desenho animado dos anos 1930 e chefes muito difíceis. Cada derrota ensina um pouco mais."
+  },
+  {
+    "n": "God of War (2018)",
+    "y": 2018,
+    "e": "🪓",
+    "h": 15,
+    "img": "img/gow2018.jpeg",
+    "t": [
+      "Ação",
+      "Aventura"
+    ],
+    "p": [
+      "PC",
+      "PlayStation"
+    ],
+    "s": "Kratos e seu filho Atreus viajam pela mitologia nórdica em uma jornada intensa, com combate pesado e câmera sem cortes."
+  },
+  {
+    "n": "Red Dead Redemption 2",
+    "y": 2018,
+    "e": "🤠",
+    "h": 30,
+    "img": "img/rdr.jpeg",
+    "t": [
+      "Aventura",
+      "Mundo aberto",
+      "Ação"
+    ],
+    "p": [
+      "PC",
+      "PlayStation",
+      "Xbox"
+    ],
+    "s": "Arthur Morgan e a gangue Van der Linde tentam sobreviver no fim do Velho Oeste. Um mundo vivo e história épica."
+  },
+  {
+    "n": "Undertale",
+    "y": 2015,
+    "e": "💛",
+    "h": 50,
+    "img": "img/undertale.png",
+    "t": [
+      "Indie",
+      "RPG"
+    ],
+    "p": [
+      "PC",
+      "PlayStation",
+      "Xbox",
+      "Switch"
+    ],
+    "s": "Um RPG em que você pode vencer sem machucar ninguém. Humor, música marcante e escolhas que mudam o final."
+  }
+]
