@@ -13,36 +13,42 @@
   padding-top: env(safe-area-inset-top, 0px);
   padding-bottom: env(safe-area-inset-bottom, 0px);
 }
+
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) {
     --bg: #120a2e;
     --text: #efe8ff;
   }
 }
+
 :root[data-theme='dark'] {
   --bg: #120a2e;
   --text: #efe8ff;
 }
+
 * {
   box-sizing: border-box;
 }
+
 html {
   scroll-padding-top: env(safe-area-inset-top, 0px);
 }
+
 body {
   margin: 0;
-  background: radial-gradient(ellipse at 50% -10%, #3a1470 0%, var(--bg) 55%)
-    fixed;
+  background: radial-gradient(ellipse at 50% -10%, #3a1470 0%, var(--bg) 55%) fixed;
   color: var(--text);
   font-family: 'Rubik', system-ui, sans-serif;
   line-height: 1.5;
   min-height: 100vh;
 }
+
 header {
   padding: 28px 16px 8px;
   max-width: 1100px;
   margin: 0 auto;
 }
+
 .logo {
   font-family: 'Orbitron', system-ui, sans-serif;
   font-weight: 900;
@@ -51,11 +57,13 @@ header {
   letter-spacing: 0.06em;
   text-shadow: 0 0 10px var(--pink), 0 0 28px var(--pink), 4px 0 0 var(--cyan);
 }
+
 .sub {
   margin: 6px 0 0;
   color: var(--mute);
   max-width: 46ch;
 }
+
 .bar {
   position: sticky;
   top: env(safe-area-inset-top, 0px);
@@ -65,6 +73,7 @@ header {
   padding: 12px 16px;
   border-bottom: 1px solid var(--line);
 }
+
 .bar-in {
   max-width: 1100px;
   margin: 0 auto;
@@ -72,11 +81,13 @@ header {
   flex-direction: column;
   gap: 10px;
 }
+
 .row {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
 }
+
 input,
 select {
   font: inherit;
@@ -87,9 +98,11 @@ select {
   padding: 10px 14px;
   min-width: 0;
 }
+
 input {
   flex: 1 1 220px;
 }
+
 input:focus,
 select:focus,
 .chip:focus-visible,
@@ -98,10 +111,12 @@ select:focus,
   outline: 3px solid var(--gold);
   outline-offset: 2px;
 }
+
 input:focus {
   border-color: var(--cyan);
   box-shadow: 0 0 14px rgba(38, 240, 255, 0.4);
 }
+
 .chips {
   display: flex;
   gap: 8px;
@@ -109,6 +124,7 @@ input:focus {
   padding-bottom: 4px;
   scrollbar-width: none;
 }
+
 .chip {
   flex: none;
   font: 500 14px 'Rubik', system-ui, sans-serif;
@@ -120,30 +136,36 @@ input:focus {
   cursor: pointer;
   transition: border-color 0.15s, background 0.15s;
 }
+
 .chip:hover {
   border-color: var(--cyan);
 }
+
 .chip[aria-pressed='true'] {
   background: var(--cyan);
   border-color: var(--cyan);
   color: #120a2e;
   font-weight: 500;
 }
+
 main {
   max-width: 1100px;
   margin: 0 auto;
   padding: 16px;
 }
+
 .count {
   color: var(--mute);
   margin: 0 0 14px;
   font-size: 14px;
 }
+
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
   gap: 16px;
 }
+
 .card {
   background: var(--card);
   border: 2px solid var(--line);
@@ -158,24 +180,25 @@ main {
   font: inherit;
   padding: 0;
 }
+
 .card:hover {
   transform: translateY(-4px);
   border-color: var(--pink);
   box-shadow: 0 8px 24px rgba(255, 46, 147, 0.3);
 }
+
 .cover {
-  height: 130px;
+  aspect-ratio: 16/9;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 56px;
   position: relative;
-  background: linear-gradient(
-    135deg,
-    hsl(var(--h), 80%, 38%),
-    hsl(calc(var(--h) + 60), 75%, 18%)
-  );
+  background: linear-gradient(135deg,
+      hsl(var(--h), 80%, 38%),
+      hsl(calc(var(--h) + 60), 75%, 18%));
 }
+
 .fav {
   position: absolute;
   top: 8px;
@@ -190,10 +213,12 @@ main {
   cursor: pointer;
   line-height: 1;
 }
+
 .fav[aria-pressed='true'] {
   color: var(--gold);
   text-shadow: 0 0 10px var(--gold);
 }
+
 .free {
   position: absolute;
   top: 10px;
@@ -205,6 +230,7 @@ main {
   padding: 2px 10px;
   border-radius: 99px;
 }
+
 .body {
   padding: 14px;
   display: flex;
@@ -212,21 +238,25 @@ main {
   gap: 8px;
   flex: 1;
 }
+
 .body h3 {
   margin: 0;
   font-family: 'Orbitron', system-ui, sans-serif;
   font-size: 17px;
   line-height: 1.25;
 }
+
 .meta {
   color: var(--mute);
   font-size: 13px;
 }
+
 .syn {
   margin: 0;
   font-size: 14px;
   color: #d9ceff;
 }
+
 .plat {
   display: flex;
   gap: 6px;
@@ -234,6 +264,7 @@ main {
   margin-top: auto;
   padding-top: 6px;
 }
+
 .pl {
   font-size: 12px;
   border: 1px solid var(--cyan);
@@ -241,11 +272,13 @@ main {
   border-radius: 6px;
   padding: 2px 8px;
 }
+
 .empty {
   text-align: center;
   padding: 50px 10px;
   color: var(--mute);
 }
+
 dialog {
   border: 2px solid var(--pink);
   border-radius: 16px;
@@ -256,34 +289,42 @@ dialog {
   width: 100%;
   box-shadow: 0 0 40px rgba(255, 46, 147, 0.4);
 }
+
 dialog::backdrop {
   background: rgba(8, 4, 24, 0.8);
 }
+
 dialog .cover {
-  height: 150px;
+  aspect-ratio: 16/9
 }
+
 .dbody {
   padding: 18px;
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
+
 .dbody h2 {
   margin: 0;
   font-family: 'Orbitron', system-ui, sans-serif;
   font-size: 22px;
 }
+
 .dbody h4 {
   margin: 0 0 6px;
   color: var(--gold);
   font-size: 14px;
 }
+
 .dbody .syn {
   font-size: 15px;
 }
+
 .dfav {
   align-self: flex-start;
 }
+
 .close {
   position: absolute;
   top: 8px;
@@ -297,9 +338,11 @@ dialog .cover {
   font-size: 20px;
   cursor: pointer;
 }
+
 .close:focus-visible {
   outline: 3px solid var(--gold);
 }
+
 footer {
   max-width: 1100px;
   margin: 0 auto;
@@ -307,11 +350,15 @@ footer {
   color: var(--mute);
   font-size: 13px;
 }
+
 .art {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover
 }
+
 @media (prefers-reduced-motion: reduce) {
   * {
     transition: none !important;
