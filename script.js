@@ -44,6 +44,7 @@ const G = [
     y: 2016,
     e: '🌾',
     h: 100,
+    img: 'img/stardew-valley.jpeg',
     t: ['Indie', 'Simulação', 'RPG'],
     p: ['PC', 'PlayStation', 'Xbox', 'Switch', 'Celular'],
     s: 'Herde uma fazenda, plante, crie animais, pesque e faça amizade com a vila. Um jogo relaxante com muito para descobrir.',
@@ -53,6 +54,7 @@ const G = [
     y: 2020,
     e: '🔥',
     h: 0,
+    img: 'img/hades.jpeg',
     t: ['Indie', 'Ação', 'RPG'],
     p: ['PC', 'PlayStation', 'Xbox', 'Switch'],
     s: 'Zagreu tenta fugir do submundo grego em partidas roguelike rápidas e viciantes, com combate fluido e história que avança a cada tentativa.',
@@ -62,6 +64,7 @@ const G = [
     y: 2022,
     e: '💍',
     h: 40,
+    img: 'img/elden-ring.jpeg',
     t: ['RPG', 'Ação', 'Mundo aberto'],
     p: ['PC', 'PlayStation', 'Xbox'],
     s: 'Um vasto mundo de fantasia sombria criado pela FromSoftware, com liberdade de exploração e chefes brutais. Prepare-se para morrer (e aprender).',
@@ -175,7 +178,7 @@ let gen = 'Todos',
   favs = new Set();
 try {
   favs = new Set(JSON.parse(localStorage.getItem('zp_fav') || '[]'));
-} catch (e) {}
+} catch (e) { }
 const tags = [
   'Todos',
   'Favoritos',
@@ -205,7 +208,7 @@ tags.forEach((t) => {
 function saveFav() {
   try {
     localStorage.setItem('zp_fav', JSON.stringify([...favs]));
-  } catch (e) {}
+  } catch (e) { }
 }
 function toggleFav(n) {
   favs.has(n) ? favs.delete(n) : favs.add(n);
@@ -244,20 +247,17 @@ function render() {
     c.tabIndex = 0;
     c.setAttribute('role', 'button');
     c.setAttribute('aria-label', 'Ver detalhes de ' + g.n);
-    c.innerHTML = `<div class="cover" style="--h:${g.h}">${
-      g.f ? '<span class="free">Grátis</span>' : ''
-    }${art(g)}<button class="fav" aria-pressed="${favs.has(
-      g.n
-    )}" aria-label="Favoritar ${g.n}">${
-      favs.has(g.n) ? '★' : '☆'
-    }</button></div>
+    c.innerHTML = `<div class="cover" style="--h:${g.h}">${g.f ? '<span class="free">Grátis</span>' : ''
+      }${art(g)}<button class="fav" aria-pressed="${favs.has(
+        g.n
+      )}" aria-label="Favoritar ${g.n}">${favs.has(g.n) ? '★' : '☆'
+      }</button></div>
 <div class="body"><h3>${g.n}</h3><div class="meta">${g.y} · ${g.t
-      .slice(0, 2)
-      .join(' / ')}</div><p class="syn">${
-      g.s.length > 110 ? g.s.slice(0, 107) + '…' : g.s
-    }</p><div class="plat">${g.p
-      .map((p) => `<span class="pl">${p}</span>`)
-      .join('')}</div></div>`;
+        .slice(0, 2)
+        .join(' / ')}</div><p class="syn">${g.s.length > 110 ? g.s.slice(0, 107) + '…' : g.s
+      }</p><div class="plat">${g.p
+        .map((p) => `<span class="pl">${p}</span>`)
+        .join('')}</div></div>`;
     c.querySelector('.fav').onclick = (e) => {
       e.stopPropagation();
       toggleFav(g.n);
@@ -281,11 +281,10 @@ function open(g) {
   )}${g.f ? ' · Grátis para jogar' : ''}</div>
 <div><h4>Sinopse</h4><p class="syn">${g.s}</p></div>
 <div><h4>Onde jogar</h4><div class="plat">${g.p
-    .map((p) => `<span class="pl">${p}</span>`)
-    .join('')}</div></div>
-<button class="chip dfav" id="df" aria-pressed="${favs.has(g.n)}">${
-    favs.has(g.n) ? '★ Nos favoritos' : '☆ Adicionar aos favoritos'
-  }</button></div>`;
+      .map((p) => `<span class="pl">${p}</span>`)
+      .join('')}</div></div>
+<button class="chip dfav" id="df" aria-pressed="${favs.has(g.n)}">${favs.has(g.n) ? '★ Nos favoritos' : '☆ Adicionar aos favoritos'
+    }</button></div>`;
   $('dc').querySelector('.close').onclick = () => $('dlg').close();
   $('df').onclick = () => {
     toggleFav(g.n);
