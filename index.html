@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>ZONA PLAY · Descubra seu próximo jogo</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rubik:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1 class="logo">GAME SEEKER</h1>
+      <p class="sub">
+        Ache seu próximo jogo: leia a sinopse, veja em quais plataformas ele
+        roda e salve seus favoritos.
+      </p>
+    </header>
+    <div class="bar">
+      <div class="bar-in">
+        <div class="row">
+          <input
+            id="q"
+            type="search"
+            placeholder="Buscar jogo, gênero ou plataforma…"
+            aria-label="Buscar jogos"
+          />
+          <select id="pf" aria-label="Filtrar por plataforma">
+            <option value="">Todas as plataformas</option>
+          </select>
+        </div>
+        <div
+          class="chips"
+          id="chips"
+          role="group"
+          aria-label="Filtrar por gênero"
+        ></div>
+      </div>
+    </div>
+    <main>
+      <p class="count" id="count" aria-live="polite"></p>
+      <div class="grid" id="grid"></div>
+    </main>
+    <footer>
+      As plataformas listadas podem mudar com o tempo. Confira sempre a loja
+      oficial antes de comprar. Os ícones são ilustrativos.
+    </footer>
+    <dialog id="dlg"><div id="dc"></div></dialog>
+    <script src="script.js"></script>
+  </body>
+</html>
