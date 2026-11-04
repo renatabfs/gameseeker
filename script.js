@@ -52,6 +52,51 @@ function surprise() {
   open(G[i]);
 }
 
+const ICONS = {
+  Todos: '▦', Favoritos: '💜', Aventura: '🧭', Ação: '⚔️', Drama: '🎭',
+  Esporte: '⚽', Estratégia: '♟️', FPS: '🎯', Grátis: '🎁', Indie: '🎮',
+  Interativo: '🕹️', Multiplayer: '👥', 'Mundo aberto': '🌍', Plataforma: '🧩',
+  RPG: '🛡️', Sandbox: '🧱', Simulação: '🏗️', Social: '💬', Tático: '📋',
+};
+
+const SLIDES = [
+  { a: 'Encontre, explore e jogue ', b: 'sem limites!', t: 'Descubra os melhores jogos, organize sua biblioteca e encontre sua próxima aventura.' },
+  { a: 'Não sabe o que jogar? ', b: 'Surpreenda-se!', t: 'Use o botão Surpreenda-me e deixe o acaso escolher por você.' },
+  { a: 'Guarde seus ', b: 'favoritos', t: 'Marque com o coração os jogos que você quer jogar depois.' },
+  { a: 'Filtre por ', b: 'gênero e plataforma', t: 'Ache rápido o que combina com o seu console ou PC.' },
+];
+
+function initHero() {
+  const title = document.getElementById('hero-title');
+  const text = document.getElementById('hero-text');
+  const dots = document.getElementById('hero-dots');
+  let cur = 0;
+
+  function show(i) {
+    cur = (i + SLIDES.length) % SLIDES.length;
+    const s = SLIDES[cur];
+    const span = document.createElement('span');
+    span.textContent = s.b;
+    title.replaceChildren(s.a, span);
+    text.textContent = s.t;
+    [...dots.children].forEach((d, n) =>
+      d.setAttribute('aria-current', n === cur ? 'true' : 'false'));
+  }
+
+  SLIDES.forEach((_, n) => {
+    const d = document.createElement('button');
+    d.type = 'button';
+    d.className = 'hero-dot';
+    d.setAttribute('aria-label', 'Slide ' + (n + 1));
+    d.onclick = () => show(n);
+    dots.append(d);
+  });
+
+  document.getElementById('hero-prev').onclick = () => show(cur - 1);
+  document.getElementById('hero-next').onclick = () => show(cur + 1);
+  show(0);
+}
+
 async function init() {
   try {
     const res = await fetch('games.json');
@@ -83,7 +128,10 @@ async function init() {
     const b = document.createElement('button');
     b.className = 'chip';
     b.dataset.tag = t;
-    b.textContent = t === 'Favoritos' ? '★ Favoritos' : t;
+    const ic = document.createElement('span');
+    ic.setAttribute('aria-hidden', 'true');
+    ic.textContent = ICONS[t] || '🎮';
+    b.append(ic, ' ' + t);
     b.setAttribute('aria-pressed', t === 'Todos' ? gens.size === 0 : gens.has(t));
     b.onclick = () => {
       if (t === 'Todos') gens.clear();
@@ -123,6 +171,9 @@ function render() {
   const q = $('q').value.trim().toLowerCase(),
     pf = $('pf').value;
   $('clear').hidden = !(gens.size || pf || q);
+  const onlyFav = gens.size === 1 && gens.has('Favoritos');
+  $('nav-home').setAttribute('aria-current', !onlyFav);
+  $('nav-fav').setAttribute('aria-current', onlyFav);
   const L = G.filter(
     (g) =>
       [...gens].every((t) =>
@@ -155,7 +206,7 @@ function render() {
     c.innerHTML = `<div class="cover" style="--h:${g.h}">${g.f ? '<span class="free">Grátis</span>' : ''
       }${art(g)}<button class="fav" aria-pressed="${favs.has(
         g.n
-      )}" aria-label="Favoritar ${g.n}">${favs.has(g.n) ? '★' : '☆'
+      )}" aria-label="Favoritar ${g.n}">${favs.has(g.n) ? '♥' : '♡'
       }</button></div>
 <div class="body"><h3>${g.n}</h3><div class="meta">${g.y} · ${g.t
         .slice(0, 2)
@@ -219,4 +270,13 @@ window.addEventListener('popstate', () => {
 });
 $('clear').onclick = clearFilters;
 $('random').onclick = surprise;
+$('nav-home').onclick = clearFilters;
+$('nav-fav').onclick = () => {
+  gens = new Set(['Favoritos']);
+  syncChips();
+  render();
+  writeURL(true);
+};
+$('see-all').onclick = clearFilters;
 init();
+initHero();

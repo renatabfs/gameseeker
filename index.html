@@ -11,40 +11,83 @@
 </head>
 
 <body>
-  <header>
-    <h1 class="logo">GAME SEEKER</h1>
-    <p class="sub">
-      Ache seu próximo jogo: leia a sinopse, veja em quais plataformas ele
-      roda e salve seus favoritos.
-    </p>
-  </header>
-  <div class="bar">
-    <div class="bar-in">
-      <div class="row">
-        <input id="q" type="search" placeholder="Buscar jogo, gênero ou plataforma…" aria-label="Buscar jogos" />
-        <select id="pf" aria-label="Filtrar por plataforma">
-          <option value="">Todas as plataformas</option>
-        </select>
-        <select id="sort" aria label="Ordenar Jogos">
-          <option vlaue=""> Ordem Padrão</option>
-          <option value="nome">Nome (A-Z)</option>
-          <option value="novos">Mais recentes</option>
-          <option value="antigos">Mais antigos</option>
-        </select>
-        <button id="clear" class="chip" type="button" hidden> Limpar filtros</button>
-        <button id="random" class="chip" type="button">🎲 Surpreenda-me</button>
+  <div class="app">
+    <aside class="side">
+      <a class="brand" href="./" aria-label="GameSeeker, ir para o início">
+        <h1 class="logo">GAME<br />SEEKER</h1>
+      </a>
+      <nav class="nav" aria-label="Navegação principal">
+        <button id="nav-home" class="nav-item" type="button" aria-current="true">
+          <span aria-hidden="true">🏠</span> Início
+        </button>
+        <button id="nav-fav" class="nav-item" type="button" aria-current="false">
+          <span aria-hidden="true">💜</span> Favoritos
+        </button>
+        <a class="nav-item" href="#chips">
+          <span aria-hidden="true">▦</span> Categorias
+        </a>
+        <a class="nav-item" href="#sobre">
+          <span aria-hidden="true">ℹ️</span> Sobre
+        </a>
+      </nav>
+    </aside>
+
+    <div class="content">
+      <header>
+        <p class="sub">Ache seu próximo jogo: ...</p>
+      </header>
+      <div class="bar">
+        <div class="bar-in">
+          <div class="row">
+            <div class="search">
+              <span class="search-ic" aria-hidden="true">🔍</span>
+              <input id="q" type="search" placeholder="Buscar jogos, gêneros ou plataformas…"
+                aria-label="Buscar jogos" />
+            </div>
+            <select id="pf" aria-label="Filtrar por plataforma">
+              <option value="">Todas as plataformas</option>
+            </select>
+            <select id="sort" aria-label="Ordenar jogos">
+              <option value="">Ordem padrão</option>
+              <option value="nome">Nome (A-Z)</option>
+              <option value="novos">Mais recentes</option>
+              <option value="antigos">Mais antigos</option>
+            </select>
+            <button id="clear" class="chip" type="button" hidden>Limpar filtros</button>
+            <button id="theme" class="icon-btn" type="button" aria-label="Alternar tema (em breve)" disabled>🌙</button>
+          </div>
+        </div>
       </div>
-      <div class="chips" id="chips" role="group" aria-label="Filtrar por gênero"></div>
+      <main>
+        <section class="hero" aria-roledescription="carousel" aria-label="Destaques">
+          <button id="hero-prev" class="hero-arrow" type="button" aria-label="Slide anterior">‹</button>
+          <div class="hero-body">
+            <p class="hero-kicker">GAME SEEKER</p>
+            <h2 id="hero-title" class="hero-title"></h2>
+            <p id="hero-text" class="hero-text"></p>
+            <a class="hero-cta" href="#chips">▶ Explorar agora →</a>
+          </div>
+          <button id="hero-next" class="hero-arrow" type="button" aria-label="Próximo slide">›</button>
+          <div id="hero-dots" class="hero-dots" role="group" aria-label="Escolher slide"></div>
+        </section>
+        <main>
+          <section class="filters" aria-labelledby="filters-title">
+            <div class="filters-head">
+              <h2 id="filters-title">▼ Filtros rápidos</h2>
+              <button id="random" class="chip" type="button">🎲 Surpreenda-me ✨</button>
+            </div>
+            <div class="chips" id="chips" role="group" aria-label="Filtrar por gênero"></div>
+          </section>
+          <div class="section-head">
+            <h2 class="section-title">⭐ Jogos em destaque</h2>
+            <button id="see-all" class="link-btn" type="button">Ver todos →</button>
+          </div>
+          <p class="count" id="count" aria-live="polite"></p>
+          <div class="grid" id="grid"></div>
+        </main>
+        <footer id="sobre"> GameSeeker · feito para descobrir seu próximo jogo </footer>
     </div>
   </div>
-  <main>
-    <p class="count" id="count" aria-live="polite"></p>
-    <div class="grid" id="grid"></div>
-  </main>
-  <footer>
-    As plataformas listadas podem mudar com o tempo. Confira sempre a loja
-    oficial antes de comprar. Os ícones são ilustrativos.
-  </footer>
   <dialog id="dlg">
     <div id="dc"></div>
   </dialog>
