@@ -11,6 +11,7 @@ function readURL() {
   gen = p.get('genero') || 'Todos';
   $('pf').value = p.get('plataforma') || '';
   $('q').value = p.get('busca') || '';
+  $('sort').value = p.get('ordem') || '';
 }
 
 function writeURL(push) {
@@ -21,6 +22,7 @@ function writeURL(push) {
   const qs = p.toString();
   const url = qs ? '?' + qs : location.pathname;
   push ? history.pushState(null, '', url) : history.replaceState(null, '', url);
+  if ($('sort').value) p.set('ordem', $('sort').value);
 }
 
 function syncChips() {
@@ -107,6 +109,13 @@ const art = (g) =>
   g.img
     ? `<img class="art" src="${g.img}" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'${g.e}'}))">`
     : `<span aria-hidden="true">${g.e}</span>`;
+
+const sorters = {
+  nome: (a, b) => a.n.localeCompare(b.n, 'pt-br'),
+  novos: (a, b) => b.y - a.y || a.n.localeCompare(b.n, 'pt-BR'),
+  antigos: (a, b) => a.y - b.y || a.n.localeCompare(b.n, 'pt-BR'),
+}
+
 function render() {
   const q = $('q').value.trim().toLowerCase(),
     pf = $('pf').value;
@@ -121,6 +130,8 @@ function render() {
           .toLowerCase()
           .includes(q))
   );
+  const so = $('sort').value;
+  if (sorters[so]) L.sort(sorters[so]);
   $('count').textContent =
     L.length + (L.length === 1 ? ' jogo encontrado' : ' jogos encontrados');
   const gr = $('grid');
@@ -190,6 +201,10 @@ $('q').oninput = () => {
   writeURL(false);
 };
 $('pf').onchange = () => {
+  render();
+  writeURL(true);
+};
+$('sort').onchange = () => {
   render();
   writeURL(true);
 };
