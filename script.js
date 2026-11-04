@@ -1,6 +1,6 @@
 let G = [];
 const $ = (id) => document.getElementById(id);
-let gen = 'Todos',
+let gens = new Set(),
   favs = new Set();
 try {
   favs = new Set(JSON.parse(localStorage.getItem('zp_fav') || '[]'));
@@ -8,7 +8,8 @@ try {
 
 function readURL() {
   const p = new URLSearchParams(location.search);
-  gen = p.get('genero') || 'Todos';
+  const g = p.get('genero');
+  gens = new Set(g ? g.split(',').filter(Boolean) : []);
   $('pf').value = p.get('plataforma') || '';
   $('q').value = p.get('busca') || '';
   $('sort').value = p.get('ordem') || '';
@@ -16,7 +17,7 @@ function readURL() {
 
 function writeURL(push) {
   const p = new URLSearchParams();
-  if (gen !== 'Todos') p.set('genero', gen);
+  if (gens.size) p.set('genero', [...gens].join(','));
   if ($('pf').value) p.set('plataforma', $('pf').value);
   if ($('q').value.trim()) p.set('busca', $('q').value.trim());
   const qs = p.toString();
@@ -26,12 +27,13 @@ function writeURL(push) {
 }
 
 function syncChips() {
-  [...$('chips').children].forEach((x) =>
-    x.setAttribute('aria-pressed', x.dataset.tag === gen)
-  );
+  [...$('chips').children].forEach((x) => {
+    const t = x.dataset.tag;
+    x.setAttribute('aria-pressed', t === 'Todos' ? gens.size === 0 : gens.has(t));
+  });
 }
 function clearFilters() {
-  gen = 'Todos';
+  gens.clear();
   $('pf').value = '';
   $('q').value = '';
   syncChips();
@@ -57,7 +59,8 @@ async function init() {
     G = await res.json();
     readURL();
     const generos = [...new Set(G.flatMap((g) => g.t))];
-    if (gen !== 'Todos' && gen !== 'Favoritos' && !generos.includes(gen)) gen = 'Todos';
+    const validos = new Set([...generos, 'Favoritos']);
+    gens = new Set([...gens].filter((t) => validos.has(t)));
   } catch (e) {
     $('count').textContent = 'Não foi possível carregar os jogos.';
     return;
@@ -81,12 +84,12 @@ async function init() {
     b.className = 'chip';
     b.dataset.tag = t;
     b.textContent = t === 'Favoritos' ? '★ Favoritos' : t;
-    b.setAttribute('aria-pressed', t === gen);
+    b.setAttribute('aria-pressed', t === 'Todos' ? gens.size === 0 : gens.has(t));
     b.onclick = () => {
-      gen = t;
-      [...$('chips').children].forEach((x) =>
-        x.setAttribute('aria-pressed', x === b)
-      );
+      if (t === 'Todos') gens.clear();
+      else if (gens.has(t)) gens.delete(t);
+      else gens.add(t);
+      syncChips();
       render();
       writeURL(true);
     };
@@ -119,11 +122,12 @@ const sorters = {
 function render() {
   const q = $('q').value.trim().toLowerCase(),
     pf = $('pf').value;
-  $('clear').hidden = !(gen !== 'Todos' || pf || q);
+  $('clear').hidden = !(gens.size || pf || q);
   const L = G.filter(
     (g) =>
-      (gen === 'Todos' ||
-        (gen === 'Favoritos' ? favs.has(g.n) : g.t.includes(gen))) &&
+      [...gens].every((t) =>
+        t === 'Favoritos' ? favs.has(g.n) : g.t.includes(t)
+      ) &&
       (!pf || g.p.includes(pf)) &&
       (!q ||
         (g.n + ' ' + g.t.join(' ') + ' ' + g.p.join(' ') + ' ' + g.s)
