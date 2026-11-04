@@ -458,6 +458,7 @@ footer {
 #random {
   border-color: var(--pink);
 }
+
 #random:hover {
   background: var(--pink);
   color: #120a2e;
@@ -470,6 +471,7 @@ footer {
   height: 100%;
   object-fit: cover
 }
+
 @media (min-width: 768px) {
   .chips {
     flex-wrap: wrap;
@@ -563,7 +565,8 @@ footer {
   border: 2px solid var(--line);
   border-radius: 20px;
   background:
-    radial-gradient(ellipse at 85% 40%, rgba(255, 46, 147, 0.35), transparent 60%),
+    linear-gradient(90deg, rgba(18, 10, 46, 0.95) 0%, rgba(18, 10, 46, 0.6) 45%, rgba(18, 10, 46, 0.1) 100%),
+    url('img/hero.jpeg') center right / cover no-repeat,
     linear-gradient(135deg, #3a1470, var(--bg2));
   overflow: hidden;
 }
@@ -623,8 +626,13 @@ footer {
   cursor: pointer;
 }
 
-#hero-prev { left: 12px; }
-#hero-next { right: 12px; }
+#hero-prev {
+  left: 12px;
+}
+
+#hero-next {
+  right: 12px;
+}
 
 .hero-dots {
   position: absolute;
@@ -683,6 +691,16 @@ footer {
 .fav[aria-pressed='true'] {
   color: var(--pink);
   text-shadow: 0 0 10px var(--pink);
+}
+
+.hero-body {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-title,
+.hero-text {
+  text-shadow: 0 2px 12px rgba (0, 0, 0, 0.6);
 }
 
 @media (prefers-reduced-motion: reduce) {
