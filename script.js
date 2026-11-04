@@ -37,6 +37,17 @@ function clearFilters() {
   writeURL(true);
 }
 
+let last = -1;
+function surprise() {
+  if (!G.length) return;
+  let i;
+  do {
+    i = Math.floor(Math.random() * G.length);
+  } while (G.length > 1 && i === last);
+  last = i;
+  open(G[i]);
+}
+
 async function init() {
   try {
     const res = await fetch('games.json');
@@ -188,4 +199,5 @@ window.addEventListener('popstate', () => {
   render();
 });
 $('clear').onclick = clearFilters;
+$('random').onclick = surprise;
 init();

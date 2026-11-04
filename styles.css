@@ -356,6 +356,14 @@ footer {
   font-size: 13px;
 }
 
+#random {
+  border-color: var(--pink);
+}
+#random:hover {
+  background: var(--pink);
+  color: #120a2e;
+}
+
 .art {
   position: absolute;
   inset: 0;
