@@ -10,6 +10,10 @@ Site do Projeto: https://renatabfs.github.io/gameseeker/
  
 - **Busca** por nome, gênero, plataforma ou trecho da sinopse
 - **Filtro por gênero** (chips roláveis) e **por plataforma** (lista suspensa)
+- **Filtro de vários gêneros** ao mesmo tempo (o jogo precisa ter todos os gêneros marcados)
+- **Ordenação** por nome (A-Z), mais recentes ou mais antigos
+- **Filtros na URL** (`?genero=Indie,Plataforma&plataforma=PC&ordem=novos&busca=celeste`): dá para compartilhar uma busca por link e o botão de voltar do navegador funciona
+- Botão **Limpar filtros** e botão **Surpreenda-me**, que abre um jogo aleatório
 - **Favoritos** salvos no navegador (`localStorage`), com filtro próprio
 - **Detalhes do jogo** em um modal com sinopse, ano, gêneros e plataformas
 - Selo **Grátis** para jogos gratuitos
@@ -23,6 +27,7 @@ GameSeeker/
 ├── style.css     # todos os estilos
 ├── script.js     # lista de jogos e lógica (busca, filtros, favoritos, modal)
 └── img/          # imagens de capa dos jogos
+├── games.json    # lista de jogos
 ```
  
 ## 🚀 Como rodar
