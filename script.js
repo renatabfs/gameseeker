@@ -5,11 +5,32 @@ let gen = 'Todos',
 try {
   favs = new Set(JSON.parse(localStorage.getItem('zp_fav') || '[]'));
 } catch (e) { }
+
+function readURL () {
+  const p = new URLSearchParams (location.search);
+  gen = p.get('genero') || 'Todos';
+  $('pf').value = p.get('plataforma') || '';
+  $('q').value = p.get('busca') || '';
+}
+
+function writeURL (push) {
+  const p = new URLSearchParams ();
+  if (gen !== 'Todos') p.set('genero', gen);
+  if ($('pf').value) p.set('plataforma', $('pf').value);
+  if ($('q').value.trim()) p.set('busca', $('q').value.trim());
+  const qs = p.toString();
+  const url = qs ? '?' + qs: location.pathname;
+  push ? history.pushState(null,'', url): history.replaceState(null, '', url);
+}
+
 async function init() {
   try {
     const res = await fetch('games.json');
     if (!res.ok) throw new Error(res.status);
     G = await res.json();
+    readURL();
+    const generos = [...new Set(G.flatMap((g) => g.t))];
+    if (gen !== 'Todos' && gen !== 'Favoritos' && !generos.includes(gen)) gen = 'Todos';
   } catch (e) {
     $('count').textContent = 'Não foi possível carregar os jogos.';
     return;
@@ -27,9 +48,11 @@ async function init() {
     o.textContent = p;
     $('pf').appendChild(o);
   });
+  $('pf').value = new URLSearchParams(location.search).get('plataforma') || '';
   tags.forEach((t) => {
     const b = document.createElement('button');
     b.className = 'chip';
+    b.dataset.tag = t;
     b.textContent = t === 'Favoritos' ? '★ Favoritos' : t;
     b.setAttribute('aria-pressed', t === gen);
     b.onclick = () => {
@@ -38,6 +61,7 @@ async function init() {
         x.setAttribute('aria-pressed', x === b)
       );
       render();
+      writeURL(true);
     };
     $('chips').appendChild(b);
   });
@@ -134,6 +158,19 @@ function open(g) {
 $('dlg').addEventListener('click', (e) => {
   if (e.target === $('dlg')) $('dlg').close();
 });
-$('q').oninput = render;
-$('pf').onchange = render;
-init();
+$('q').oninput = () => {
+  render();
+  writeURL(false);
+};
+$('pf').onchange = () => {
+  render();
+  writeURL(true);
+};
+window.addEventListener('popstate', () => {
+  readURL();
+  [...$('chips').children].forEach((x) =>
+    x.setAttribute('aria-pressed', x.dataset.tag === gen)
+  );
+  render();
+});
+init()
