@@ -6,21 +6,35 @@ try {
   favs = new Set(JSON.parse(localStorage.getItem('zp_fav') || '[]'));
 } catch (e) { }
 
-function readURL () {
-  const p = new URLSearchParams (location.search);
+function readURL() {
+  const p = new URLSearchParams(location.search);
   gen = p.get('genero') || 'Todos';
   $('pf').value = p.get('plataforma') || '';
   $('q').value = p.get('busca') || '';
 }
 
-function writeURL (push) {
-  const p = new URLSearchParams ();
+function writeURL(push) {
+  const p = new URLSearchParams();
   if (gen !== 'Todos') p.set('genero', gen);
   if ($('pf').value) p.set('plataforma', $('pf').value);
   if ($('q').value.trim()) p.set('busca', $('q').value.trim());
   const qs = p.toString();
-  const url = qs ? '?' + qs: location.pathname;
-  push ? history.pushState(null,'', url): history.replaceState(null, '', url);
+  const url = qs ? '?' + qs : location.pathname;
+  push ? history.pushState(null, '', url) : history.replaceState(null, '', url);
+}
+
+function syncChips() {
+  [...$('chips').children].forEach((x) =>
+    x.setAttribute('aria-pressed', x.dataset.tag === gen)
+  );
+}
+function clearFilters() {
+  gen = 'Todos';
+  $('pf').value = '';
+  $('q').value = '';
+  syncChips();
+  render();
+  writeURL(true);
 }
 
 async function init() {
@@ -85,6 +99,7 @@ const art = (g) =>
 function render() {
   const q = $('q').value.trim().toLowerCase(),
     pf = $('pf').value;
+  $('clear').hidden = !(gen !== 'Todos' || pf || q);
   const L = G.filter(
     (g) =>
       (gen === 'Todos' ||
@@ -101,7 +116,8 @@ function render() {
   gr.innerHTML = '';
   if (!L.length) {
     gr.innerHTML =
-      '<p class="empty">Nenhum jogo encontrado. Tente outro termo ou limpe os filtros.</p>';
+      '<div class="empty"><p>Nenhum jogo encontrado. Tente outro termo ou limpe os filtros.</p><button class="chip" id="clear2" type="button">Limpar filtros</button></div>';
+    $('clear2').onclick = clearFilters;
     return;
   }
   L.forEach((g) => {
@@ -168,9 +184,8 @@ $('pf').onchange = () => {
 };
 window.addEventListener('popstate', () => {
   readURL();
-  [...$('chips').children].forEach((x) =>
-    x.setAttribute('aria-pressed', x.dataset.tag === gen)
-  );
+  syncChips();
   render();
 });
-init()
+$('clear').onclick = clearFilters;
+init();
