@@ -20,11 +20,11 @@ function writeURL(push) {
   if (gens.size) p.set('genero', [...gens].join(','));
   if ($('pf').value) p.set('plataforma', $('pf').value);
   if ($('q').value.trim()) p.set('busca', $('q').value.trim());
+  if ($('sort').value) p.set('ordem', $('sort').value);
   const qs = p.toString();
   const url = qs ? '?' + qs : location.pathname;
   push ? history.pushState(null, '', url) : history.replaceState(null, '', url);
-  if ($('sort').value) p.set('ordem', $('sort').value);
-}
+  }
 
 function syncChips() {
   [...$('chips').children].forEach((x) => {
@@ -60,7 +60,7 @@ const ICONS = {
 };
 
 const SLIDES = [
-  { a: 'Encontre, explore e jogue ', b: 'sem limites!', t: 'Descubra os melhores jogos, organize sua biblioteca e encontre sua próxima aventura.' },
+  { a: 'Encontre, explore e jogue ', b: 'sem limites!', t: 'Descubra os melhores jogos, e encontre sua próxima aventura.' },
   { a: 'Não sabe o que jogar? ', b: 'Surpreenda-se!', t: 'Use o botão Surpreenda-me e deixe o acaso escolher por você.' },
   { a: 'Guarde seus ', b: 'favoritos', t: 'Marque com o coração os jogos que você quer jogar depois.' },
   { a: 'Filtre por ', b: 'gênero e plataforma', t: 'Ache rápido o que combina com o seu console ou PC.' },
@@ -162,7 +162,7 @@ const art = (g) =>
     : `<span aria-hidden="true">${g.e}</span>`;
 
 const sorters = {
-  nome: (a, b) => a.n.localeCompare(b.n, 'pt-br'),
+  nome: (a, b) => a.n.localeCompare(b.n, 'pt-BR'),
   novos: (a, b) => b.y - a.y || a.n.localeCompare(b.n, 'pt-BR'),
   antigos: (a, b) => a.y - b.y || a.n.localeCompare(b.n, 'pt-BR'),
 }
@@ -239,7 +239,7 @@ function open(g) {
 <div><h4>Onde jogar</h4><div class="plat">${g.p
       .map((p) => `<span class="pl">${p}</span>`)
       .join('')}</div></div>
-<button class="chip dfav" id="df" aria-pressed="${favs.has(g.n)}">${favs.has(g.n) ? '★ Nos favoritos' : '☆ Adicionar aos favoritos'
+<button class="chip dfav" id="df" aria-pressed="${favs.has(g.n)}">${favs.has(g.n) ? '♥ Nos favoritos' : '♡ Adicionar aos favoritos'
     }</button></div>`;
   $('dc').querySelector('.close').onclick = () => $('dlg').close();
   $('df').onclick = () => {

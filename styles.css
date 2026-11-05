@@ -143,7 +143,7 @@ body {
 }
 
 header {
-  padding: 28px 16px 8px;
+  padding: 16px 16px 8px;
   max-width: 1100px;
   margin: 0 auto;
 }
@@ -313,11 +313,6 @@ main {
   line-height: 1;
 }
 
-.fav[aria-pressed='true'] {
-  color: var(--gold);
-  text-shadow: 0 0 10px var(--gold);
-}
-
 .free {
   position: absolute;
   top: 10px;
@@ -453,15 +448,6 @@ footer {
   padding: 20px 16px 40px;
   color: var(--mute);
   font-size: 13px;
-}
-
-#random {
-  border-color: var(--pink);
-}
-
-#random:hover {
-  background: var(--pink);
-  color: #120a2e;
 }
 
 .art {
@@ -700,11 +686,23 @@ footer {
 
 .hero-title,
 .hero-text {
-  text-shadow: 0 2px 12px rgba (0, 0, 0, 0.6);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+}
+
+@media (max-width: 600px) {
+  .hero {
+    padding: 24px 56px;
+    min-height: 220px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   * {
     transition: none !important;
   }
+}
+
+#chips,
+#sobre {
+  scroll-margin-top: 110px;
 }
