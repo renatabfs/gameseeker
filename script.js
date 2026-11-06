@@ -56,26 +56,23 @@ function surprise() {
 }
 
 const ICONS = {
-  Todos: "▦",
-  Favoritos: "💜",
-  Aventura: "🧭",
-  Ação: "⚔️",
-  Drama: "🎭",
-  Esporte: "⚽",
-  Estratégia: "♟️",
-  FPS: "🎯",
-  Grátis: "🎁",
-  Indie: "🎮",
-  Interativo: "🕹️",
-  Multiplayer: "👥",
-  "Mundo aberto": "🌍",
-  Plataforma: "🧩",
-  RPG: "🛡️",
-  Sandbox: "🧱",
-  Simulação: "🏗️",
-  Social: "💬",
-  Tático: "📋",
+  Todos: "grid",
+  Favoritos: "heart",
+  Aventura: "compass",
+  Ação: "crosshair",
+  FPS: "target",
+  RPG: "shield",
+  Estratégia: "pawn",
+  Indie: "gamepad",
+  Multiplayer: "users",
+  Grátis: "gift",
+  "Mundo aberto": "globe",
+  Social: "chat",
+  Sandbox: "box",
 };
+
+const icon = (n) =>
+  `<svg class="ic" aria-hidden="true"><use href="#i-${n}"/></svg>`;
 
 const SLIDES = [
   {
@@ -165,7 +162,7 @@ async function init() {
     b.dataset.tag = t;
     const ic = document.createElement("span");
     ic.setAttribute("aria-hidden", "true");
-    ic.textContent = ICONS[t] || "🎮";
+    ic.innerHTML = icon(ICONS[t] || "gamepad");
     b.append(ic, " " + t);
     b.setAttribute(
       "aria-pressed",
@@ -241,7 +238,7 @@ function makeCard(g) {
 }
 
 function renderFeatured() {
-  const feat = G.filter((g) => g.d).slice(0,4);
+  const feat = G.filter((g) => g.d).slice(0, 4);
   const noFilters = !(gens.size || $("pf").value || $("q").value.trim());
   $("featured").hidden = !(noFilters && feat.length);
   const row = $("feat-row");
@@ -337,7 +334,7 @@ $("nav-fav").onclick = () => {
 
 function applyTheme(t) {
   document.documentElement.dataset.theme = t;
-  $("theme").textContent = t === "dark" ? "☀️" : "🌙";
+  $("theme").innerHTML = icon(t === "dark" ? "sun" : "moon");
   $("theme").setAttribute(
     "aria-label",
     t === "dark" ? "Mudar para o tema claro" : "Mudar para o tema escuro"
@@ -353,10 +350,10 @@ $("theme").onclick = () => {
   } catch (e) {}
 };
 
-$('chips-more').onclick = () => {
-  const closed = $('chips').classList.toggle('collapsed');
-  $('chips-more').textContent = closed ? 'Ver mais gêneros ▾' : 'Ver menos ▴';
-  $('chips-more').setAttribute('aria-expanded', !closed);
+$("chips-more").onclick = () => {
+  const closed = $("chips").classList.toggle("collapsed");
+  $("chips-more").textContent = closed ? "Ver mais gêneros ▾" : "Ver menos ▴";
+  $("chips-more").setAttribute("aria-expanded", !closed);
 };
 
 applyTheme(document.documentElement.dataset.theme || "dark");

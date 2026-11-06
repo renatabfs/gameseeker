@@ -861,3 +861,40 @@ footer {
     display: none;
   }
 }
+.ic {
+  width: 1.15em;
+  height: 1.15em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vertical-align: -0.2em;
+  flex: none;
+}
+
+.search-ic {
+  color: var(--accent);
+}
+
+.brand-ic {
+  width: 44px;
+  height: 44px;
+  color: #b43df0;
+}
+
+.side-card-ic {
+  width: 32px;
+  height: 32px;
+  color: #d65cff;
+}
+
+.side-card-pad {
+  width: 64px;
+  height: 64px;
+  color: #b43df0;
+}
+
+.hero-cta .ic {
+  fill: currentColor;
+}
