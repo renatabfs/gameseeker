@@ -206,7 +206,7 @@ const sorters = {
 };
 
 function makeCard(g) {
-  const c = document.createElement("div"); // Apenas uma vez!
+  const c = document.createElement("div");
   c.className = "card";
   c.tabIndex = 0;
   c.setAttribute("role", "button");
@@ -221,8 +221,11 @@ function makeCard(g) {
     .join(" / ")}</div><p class="syn">${
     g.s.length > 110 ? g.s.slice(0, 107) + "…" : g.s
   }</p><div class="plat">${g.p
+    .slice(0, 4)
     .map((p) => `<span class="pl">${p}</span>`)
-    .join("")}</div></div>`;
+    .join("")}${
+    g.p.length > 4 ? `<span class="pl">+${g.p.length - 4}</span>` : ""
+  }</div></div>`;
   c.querySelector(".fav").onclick = (e) => {
     e.stopPropagation();
     toggleFav(g.n);
@@ -238,7 +241,7 @@ function makeCard(g) {
 }
 
 function renderFeatured() {
-  const feat = G.filter((g) => g.d);
+  const feat = G.filter((g) => g.d).slice(0,4);
   const noFilters = !(gens.size || $("pf").value || $("q").value.trim());
   $("featured").hidden = !(noFilters && feat.length);
   const row = $("feat-row");
@@ -348,6 +351,12 @@ $("theme").onclick = () => {
   try {
     localStorage.setItem("zp_theme", t);
   } catch (e) {}
+};
+
+$('chips-more').onclick = () => {
+  const closed = $('chips').classList.toggle('collapsed');
+  $('chips-more').textContent = closed ? 'Ver mais gêneros ▾' : 'Ver menos ▴';
+  $('chips-more').setAttribute('aria-expanded', !closed);
 };
 
 applyTheme(document.documentElement.dataset.theme || "dark");

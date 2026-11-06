@@ -59,9 +59,6 @@
       </aside>
 
       <div class="content">
-        <header>
-          <p class="sub">Ache seu próximo jogo em segundos</p>
-        </header>
         <div class="bar">
           <div class="bar-in">
             <div class="row">
@@ -77,15 +74,6 @@
               <select id="pf" aria-label="Filtrar por plataforma">
                 <option value="">Todas as plataformas</option>
               </select>
-              <select id="sort" aria-label="Ordenar jogos">
-                <option value="">Ordem padrão</option>
-                <option value="nome">Nome (A-Z)</option>
-                <option value="novos">Mais recentes</option>
-                <option value="antigos">Mais antigos</option>
-              </select>
-              <button id="clear" class="chip" type="button" hidden>
-                Limpar filtros
-              </button>
               <button
                 id="theme"
                 class="icon-btn"
@@ -135,16 +123,35 @@
           <section class="filters" aria-labelledby="filters-title">
             <div class="filters-head">
               <h2 id="filters-title">▼ Filtros rápidos</h2>
-              <button id="random" class="chip" type="button">
-                🎲 Surpreenda-me ✨
-              </button>
+              <div class="actions">
+                <select id="sort" aria-label="Ordenar jogos">
+                  <option value="">Ordem padrão</option>
+                  <option value="nome">Nome (A-Z)</option>
+                  <option value="novos">Mais recentes</option>
+                  <option value="antigos">Mais antigos</option>
+                </select>
+                <button id="clear" class="chip" type="button" hidden>
+                  Limpar filtros
+                </button>
+                <button id="random" class="chip" type="button">
+                  🎲 Surpreenda-me ✨
+                </button>
+              </div>
             </div>
             <div
-              class="chips"
+              class="chips collapsed"
               id="chips"
               role="group"
               aria-label="Filtrar por gênero"
             ></div>
+            <button
+              id="chips-more"
+              class="link-btn"
+              type="button"
+              aria-expanded="false"
+            >
+              Ver mais gêneros ▾
+            </button>
           </section>
           <section id="featured" class="featured" aria-labelledby="feat-title">
             <div class="section-head">
@@ -155,7 +162,6 @@
             </div>
             <div id="feat-row" class="row-scroll"></div>
           </section>
-
           <div id="all" class="section-head">
             <h2 class="section-title">📚 Todos os jogos</h2>
           </div>
