@@ -926,3 +926,16 @@ footer {
 .section-title .ic {
   flex: none;
 }
+
+.side-card h2 {
+  color: #efe8ff;
+}
+
+.side-card p {
+  color: #c9bdf0;
+}
+
+:root[data-theme="light"] .logo {
+  color: var(--text);
+  text-shadow: 2px 2px 0 rgba(214, 23, 111, 0.35);
+}
