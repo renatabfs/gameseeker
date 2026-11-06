@@ -35,10 +35,12 @@
   position: sticky;
   top: 0;
   height: 100vh;
-  padding: 28px 16px;
+  overflow-y: auto;
+  scrollbar-width: none;
+  padding: 20px 16px;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 20px;
   background: var(--side-bg);
   border-right: 1px solid var(--line);
 }
@@ -798,19 +800,64 @@ footer {
 .filters {
   padding: 0;
 }
-  
+
 #chips-more {
   display: none;
 }
 
 @media (min-width: 768px) {
   .chips.collapsed {
-    max-height: 38px;
+    max-height: 34px;
     overflow: hidden;
   }
 
   #chips-more {
     display: block;
     margin-top: 8px;
+  }
+}
+
+.brand-ic {
+  display: block;
+  font-size: 36px;
+  line-height: 1;
+  margin-bottom: 8px;
+  filter: drop-shadow(0 0 10px #b43df0);
+}
+
+.side-card {
+  margin-top: auto;
+  padding: 18px 14px;
+  text-align: center;
+  border: 2px solid var(--line);
+  border-radius: 18px;
+  background: linear-gradient(160deg, #2a1470, var(--bg2));
+}
+
+.side-card h2 {
+  margin: 6px 0;
+  font-size: 17px;
+}
+
+.side-card p {
+  margin: 0;
+  color: var(--mute);
+  font-size: 14px;
+}
+
+.side-card-ic {
+  font-size: 32px;
+}
+
+.side-card-pad {
+  margin-top: 14px;
+  font-size: 56px;
+  filter: drop-shadow(0 0 14px #b43df0);
+}
+
+@media (max-width: 800px) {
+  .side-card,
+  .brand-ic {
+    display: none;
   }
 }
