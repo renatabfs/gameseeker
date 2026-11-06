@@ -74,6 +74,10 @@ const ICONS = {
   Drama: "drama",
   Esporte: "trophy",
   "Hack and Slash": "sword",
+  Interativo: "pointer",
+  Plataforma: "stairs",
+  Simulação: "building",
+  Tático: "clipboard",
 };
 
 const icon = (n) =>
