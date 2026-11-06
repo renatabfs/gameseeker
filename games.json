@@ -3,6 +3,7 @@
     "n": "Detroit Become Human",
     "y": 2018,
     "h": 140,
+    "d": 1,
     "img": "img/detroit.jpeg",
     "t": [
       "Aventura",
@@ -55,9 +56,28 @@
     "s": "Desça ao reino subterrâneo de Hallownest, um mapa enorme e interligado cheio de insetos, segredos e chefes desafiadores."
   },
   {
+    "n": "Grand Theft Auto V",
+    "d": 1,
+    "y": 2013,
+    "h": 80,
+    "img": "img/gta-v.jpg",
+    "t": [
+      "Ação",
+      "Mundo aberto",
+      "Aventura",
+      "Multiplayer"
+    ],
+    "p": [
+      "PC",
+      "PlayStation",
+      "Xbox"
+    ],
+    "s": "Explore Los Santos em uma história que acompanha três criminosos cujas vidas se cruzam em meio a assaltos, perseguições e conflitos com o submundo do crime. Além da campanha, GTA Online oferece um enorme mundo multiplayer para jogar sozinho ou com amigos."
+  },
+      {
     "n": "Minecraft",
     "y": 2011,
-    "e": "⛏️",
+    "d": 1,
     "h": 140,
     "img": "img/minecraft.jpg",
     "t": [
@@ -73,6 +93,25 @@
       "Celular"
     ],
     "s": "Um mundo infinito de blocos para explorar, minerar e construir. Sobreviva à noite ou crie o que a imaginação mandar, sozinho ou com amigos."
+  },
+  {
+    "n": "Cyberpunk 2077",
+    "y": 2020,
+    "h": 60,
+    "d": 1,
+    "img": "img/cyberpunk-2077.jpeg",
+    "t": [
+      "RPG",
+      "Ação",
+      "Mundo aberto",
+      "Aventura"
+    ],
+    "p": [
+      "PC",
+      "PlayStation",
+      "Xbox"
+    ],
+    "s": "Em Night City, uma metrópole futurista dominada por corporações, tecnologia e modificações corporais, você assume o papel de V, um mercenário em busca de um implante capaz de mudar seu destino. Suas escolhas, habilidades e estilo de jogo moldam sua jornada por esse mundo perigoso."
   },
   {
     "n": "Far Cry 3",
@@ -93,6 +132,24 @@
     "s": "Jason Brody está de férias em uma ilha tropical paradisíaca com seus amigos quando a viagem se transforma em um pesadelo. Após serem sequestrados por piratas liderados pelo perigoso e imprevisível Vaas Montenegro, Jason consegue escapar, mas seus amigos continuam em cativeiro. Perdido em uma ilha dominada pela violência, pelo tráfico e por conflitos entre facções, Jason precisa aprender a sobreviver, resgatar seus amigos e enfrentar seus próprios limites. Em meio a uma jornada de transformação, ele descobrirá que o paraíso pode esconder os piores horrores."
   },
   {
+    "n": "Counter-Strike 2",
+    "y": 2023,
+    "e": "🎯",
+    "h": 0,
+    "img": "img/counter-strike-2.jpeg",
+    "t": [
+      "FPS",
+      "Multiplayer",
+      "Tático",
+      "Grátis"
+    ],
+    "p": [
+      "PC"
+    ],
+    "f": 1,
+    "s": "O clássico FPS competitivo chega à nova geração com partidas táticas entre terroristas e contra-terroristas. Trabalhe em equipe, domine mapas e armas e faça cada rodada valer a pena."
+  },
+  {
     "n": "Celeste",
     "y": 2018,
     "e": "🏔️",
@@ -109,6 +166,26 @@
       "Switch"
     ],
     "s": "Madeline escala a montanha Celeste enquanto enfrenta seus medos. Plataforma precisa, difícil e com uma história emocionante."
+  },
+  {
+    "n": "Resident Evil Requiem",
+    "y": 2026,
+    "d": 1,
+    "h": 0,
+    "img": "img/resident-evil-requiem.jpeg",
+    "t": [
+      "Terror",
+      "Ação",
+      "Sobrevivência",
+      "Aventura"
+    ],
+    "p": [
+      "PC",
+      "PlayStation",
+      "Xbox",
+      "Switch"
+    ],
+    "s": "Uma nova experiência de terror e sobrevivência no universo de Resident Evil. Acompanhe Grace Ashcroft e Leon S. Kennedy em uma investigação que os leva de volta aos horrores ligados a Raccoon City. Alterne entre momentos de tensão, exploração e combates intensos enquanto tenta sobreviver a uma ameaça aterrorizante."
   },
   {
     "n": "Stardew Valley",
@@ -133,7 +210,6 @@
   {
     "n": "Hades",
     "y": 2020,
-    "e": "🔥",
     "h": 0,
     "img": "img/hades.jpeg",
     "t": [
@@ -148,6 +224,23 @@
       "Switch"
     ],
     "s": "Zagreu tenta fugir do submundo grego em partidas roguelike rápidas e viciantes, com combate fluido e história que avança a cada tentativa."
+  },
+  {
+    "n": "Forza Horizon 6",
+    "y": 2026,
+    "h": 0,
+    "img": "img/forza-horizon-6.jpeg",
+    "t": [
+      "Corrida",
+      "Mundo aberto",
+      "Simulação"
+    ],
+    "p": [
+      "PC",
+      "Xbox",
+      "PlayStation"
+    ],
+    "s": "Explore as paisagens do Japão em um festival automobilístico de mundo aberto. Dirija centenas de carros, descubra cidades, montanhas e estradas deslumbrantes e participe de corridas e desafios enquanto constrói sua reputação no Horizon Festival."
   },
   {
     "n": "The Witcher 3",
@@ -167,6 +260,58 @@
     ],
     "s": "Geralt de Rívia caça monstros e procura sua filha adotiva em um mundo cheio de escolhas com consequências reais."
   },
+  {
+  "n": "Phantom Blade Zero",
+  "y": 2026,
+  "h": 0,
+  "img": "img/phantom-blade-0.jpeg",
+  "t": [
+    "Ação",
+    "RPG",
+    "Aventura",
+    "Hack and Slash"
+  ],
+  "p": [
+    "PC",
+    "PlayStation"
+  ],
+  "s": "Assuma o papel de Soul, um guerreiro acusado injustamente de assassinar seu mestre e condenado a morrer em apenas 66 dias. Em um mundo inspirado na cultura wuxia, enfrente assassinos, domine técnicas de combate com espadas e descubra uma conspiração que ameaça tudo ao seu redor."
+},
+  {
+  "n": "PUBG: Battlegrounds",
+  "y": 2017,
+  "h": 0,
+  "img": "img/pubg.jpeg",
+  "t": [
+    "Battle Royale",
+    "Multiplayer",
+    "Ação",
+    "Grátis"
+  ],
+  "p": [
+    "PC",
+    "PlayStation",
+    "Xbox",
+    "Celular"
+  ],
+  "f": 1,
+  "s": "Até 100 jogadores saltam em um enorme campo de batalha em busca de armas, equipamentos e recursos. Sobreviva aos adversários, fique dentro da zona segura e seja o último jogador ou equipe de pé."
+},
+{
+  "n": "Marvel's Wolverine",
+  "y": 2026,
+  "h": 0,
+  "img": "img/marvels-wolverine.jpg",
+  "t": [
+    "Ação",
+    "Aventura",
+    "Super-heróis"
+  ],
+  "p": [
+    "PlayStation"
+  ],
+  "s": "Entre na pele de Logan em uma aventura intensa e brutal protagonizada por um dos personagens mais icônicos da Marvel. Em busca de respostas sobre seu passado, Wolverine atravessa diferentes cenários enfrentando inimigos perigosos com suas garras de adamantium, habilidades de combate e fator de cura."
+},
   {
     "n": "Fortnite",
     "y": 2017,
@@ -352,7 +497,7 @@
   {
     "n": "Red Dead Redemption 2",
     "y": 2018,
-    "e": "🤠",
+    "d": 1,
     "h": 30,
     "img": "img/rdr.jpeg",
     "t": [

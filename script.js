@@ -167,10 +167,51 @@ const sorters = {
   antigos: (a, b) => a.y - b.y || a.n.localeCompare(b.n, 'pt-BR'),
 }
 
+function makeCard(g) {
+  const c = document.createElement('div'); // Apenas uma vez!
+  c.className = 'card';
+  c.tabIndex = 0;
+  c.setAttribute('role', 'button');
+  c.setAttribute('aria-label', 'Ver detalhes de ' + g.n);
+  c.innerHTML = `<div class="cover" style="--h:${g.h}">${g.f ? '<span class="free">Grátis</span>' : ''
+    }${art(g)}<button class="fav" aria-pressed="${favs.has(
+      g.n
+    )}" aria-label="Favoritar ${g.n}">${favs.has(g.n) ? '♥' : '♡'
+    }</button></div>
+<div class="body"><h3>${g.n}</h3><div class="meta">${g.y} · ${g.t
+      .slice(0, 2)
+      .join(' / ')}</div><p class="syn">${g.s.length > 110 ? g.s.slice(0, 107) + '…' : g.s
+    }</p><div class="plat">${g.p
+      .map((p) => `<span class="pl">${p}</span>`)
+      .join('')}</div></div>`;
+  c.querySelector('.fav').onclick = (e) => {
+    e.stopPropagation();
+    toggleFav(g.n);
+  };
+  c.onclick = () => open(g);
+  c.onkeydown = (e) => {
+    if (e.target === c && (e.key === 'Enter' || e.key === ' ')) {
+      e.preventDefault();
+      open(g);
+    }
+  };
+  return c;
+}
+
+function renderFeatured() {
+  const feat = G.filter((g) => g.d);
+  const noFilters = !(gens.size || $('pf').value || $('q').value.trim());
+  $('featured').hidden = !(noFilters && feat.length);
+  const row = $('feat-row');
+  row.replaceChildren();
+  feat.forEach((g) => row.append(makeCard(g)));
+}
+
 function render() {
   const q = $('q').value.trim().toLowerCase(),
     pf = $('pf').value;
   $('clear').hidden = !(gens.size || pf || q);
+  renderFeatured();
   const onlyFav = gens.size === 1 && gens.has('Favoritos');
   $('nav-home').setAttribute('aria-current', !onlyFav);
   $('nav-fav').setAttribute('aria-current', onlyFav);
@@ -198,34 +239,7 @@ function render() {
     return;
   }
   L.forEach((g) => {
-    const c = document.createElement('div');
-    c.className = 'card';
-    c.tabIndex = 0;
-    c.setAttribute('role', 'button');
-    c.setAttribute('aria-label', 'Ver detalhes de ' + g.n);
-    c.innerHTML = `<div class="cover" style="--h:${g.h}">${g.f ? '<span class="free">Grátis</span>' : ''
-      }${art(g)}<button class="fav" aria-pressed="${favs.has(
-        g.n
-      )}" aria-label="Favoritar ${g.n}">${favs.has(g.n) ? '♥' : '♡'
-      }</button></div>
-<div class="body"><h3>${g.n}</h3><div class="meta">${g.y} · ${g.t
-        .slice(0, 2)
-        .join(' / ')}</div><p class="syn">${g.s.length > 110 ? g.s.slice(0, 107) + '…' : g.s
-      }</p><div class="plat">${g.p
-        .map((p) => `<span class="pl">${p}</span>`)
-        .join('')}</div></div>`;
-    c.querySelector('.fav').onclick = (e) => {
-      e.stopPropagation();
-      toggleFav(g.n);
-    };
-    c.onclick = () => open(g);
-    c.onkeydown = (e) => {
-      if (e.target === c && (e.key === 'Enter' || e.key === ' ')) {
-        e.preventDefault();
-        open(g);
-      }
-    };
-    gr.appendChild(c);
+        gr.appendChild(makeCard(g));
   });
 }
 function open(g) {
@@ -277,6 +291,5 @@ $('nav-fav').onclick = () => {
   render();
   writeURL(true);
 };
-$('see-all').onclick = clearFilters;
 init();
 initHero();

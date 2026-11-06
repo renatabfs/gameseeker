@@ -77,9 +77,16 @@
             </div>
             <div class="chips" id="chips" role="group" aria-label="Filtrar por gênero"></div>
           </section>
-          <div class="section-head">
-            <h2 class="section-title">⭐ Jogos em destaque</h2>
-            <button id="see-all" class="link-btn" type="button">Ver todos →</button>
+          <section id="featured" class="featured" aria-labelledby="feat-title">
+            <div class="section-head">
+              <h2 id="feat-title" class="section-title">⭐ Jogos em destaque</h2>
+              <a id="see-all" class="link-btn" href="#all">Ver todos →</a>
+            </div>
+            <div id="feat-row" class="row-scroll"></div>
+          </section>
+          
+          <div id="all" class="section-head">
+            <h2 class="section-title">📚 Todos os jogos</h2>
           </div>
           <p class="count" id="count" aria-live="polite"></p>
           <div class="grid" id="grid"></div>

@@ -706,3 +706,23 @@ footer {
 #sobre {
   scroll-margin-top: 110px;
 }
+#all {
+  scroll-margin-top: 110px;
+}
+
+.featured {
+  margin-bottom: 28px;
+}
+
+.row-scroll {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding: 8px 2px 14px;
+  scroll-snap-type: x proximity;
+}
+
+.row-scroll .card {
+  flex: 0 0 270px;
+  scroll-snap-align: start;
+}
