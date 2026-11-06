@@ -69,6 +69,11 @@ const ICONS = {
   "Mundo aberto": "globe",
   Social: "chat",
   Sandbox: "box",
+  "Battle Royale": "flame",
+  Corrida: "car",
+  Drama: "drama",
+  Esporte: "trophy",
+  "Hack and Slash": "sword",
 };
 
 const icon = (n) =>

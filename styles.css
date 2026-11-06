@@ -898,3 +898,31 @@ footer {
 .hero-cta .ic {
   fill: currentColor;
 }
+.filters-head h2,
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filters-head h2 .ic,
+.section-title .ic {
+  color: var(--accent);
+}
+
+#random .ic {
+  width: 1.3em;
+  height: 1.3em;
+  margin-right: 4px;
+  color: var(--pink);
+}
+.section-title,
+.filters-head h2 {
+  font-weight: 700;
+  text-align: left;
+  justify-content: flex-start;
+}
+
+.section-title .ic {
+  flex: none;
+}
