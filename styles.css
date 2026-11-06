@@ -8,6 +8,13 @@
   --gold: #ffd23f;
   --text: #efe8ff;
   --mute: #a99bd6;
+  --syn: #d9ceff;
+  --accent: #d65cff;
+  --on-fill: #120a2e;
+  --glass: rgba(18, 10, 46, 0.92);
+  --side-bg: rgba(18, 10, 46, 0.6);
+  --hover: rgba(255, 255, 255, 0.07);
+  --glow: #3a1470;
   color-scheme: dark;
   box-sizing: border-box;
   padding-top: env(safe-area-inset-top, 0px);
@@ -32,7 +39,7 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
-  background: rgba(18, 10, 46, 0.6);
+  background: var(--side-bg);
   border-right: 1px solid var(--line);
 }
 
@@ -61,7 +68,7 @@
   border-radius: 12px;
   background: transparent;
   color: var(--text);
-  font: 500 15px 'Rubik', system-ui, sans-serif;
+  font: 500 15px "Rubik", system-ui, sans-serif;
   text-align: left;
   text-decoration: none;
   cursor: pointer;
@@ -69,7 +76,7 @@
 }
 
 .nav-item:hover {
-  background: rgba(255, 255, 255, 0.07);
+  background: var(--hover);
 }
 
 .nav-item:focus-visible {
@@ -77,8 +84,9 @@
   outline-offset: 2px;
 }
 
-.nav-item[aria-current='true'] {
+.nav-item[aria-current="true"] {
   background: linear-gradient(135deg, #7b2ff7, #b43df0);
+  color: #fff;
 }
 
 @media (max-width: 800px) {
@@ -113,16 +121,24 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']) {
-    --bg: #120a2e;
-    --text: #efe8ff;
-  }
-}
-
-:root[data-theme='dark'] {
-  --bg: #120a2e;
-  --text: #efe8ff;
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f6f2ff;
+  --bg2: #ffffff;
+  --card: #ffffff;
+  --line: #cfc3ee;
+  --pink: #d6176f;
+  --cyan: #0b7f90;
+  --gold: #b45309;
+  --text: #1c1147;
+  --mute: #5e5190;
+  --syn: #3d3470;
+  --accent: #8a1fc0;
+  --on-fill: #ffffff;
+  --glass: rgba(246, 242, 255, 0.92);
+  --side-bg: rgba(255, 255, 255, 0.7);
+  --hover: rgba(28, 17, 71, 0.07);
+  --glow: #e4d6ff;
 }
 
 * {
@@ -135,9 +151,14 @@ html {
 
 body {
   margin: 0;
-  background: radial-gradient(ellipse at 50% -10%, #3a1470 0%, var(--bg) 55%) fixed;
+  background: radial-gradient(
+      ellipse at 50% -10%,
+      var(--glow) 0%,
+      var(--bg) 55%
+    )
+    fixed;
   color: var(--text);
-  font-family: 'Rubik', system-ui, sans-serif;
+  font-family: "Rubik", system-ui, sans-serif;
   line-height: 1.5;
   min-height: 100vh;
 }
@@ -149,7 +170,7 @@ header {
 }
 
 .logo {
-  font-family: 'Orbitron', system-ui, sans-serif;
+  font-family: "Orbitron", system-ui, sans-serif;
   font-weight: 900;
   font-size: clamp(30px, 8vw, 56px);
   margin: 0;
@@ -167,7 +188,7 @@ header {
   position: sticky;
   top: env(safe-area-inset-top, 0px);
   z-index: 5;
-  background: rgba(18, 10, 46, 0.92);
+  background: var(--glass);
   backdrop-filter: blur(8px);
   padding: 12px 16px;
   border-bottom: 1px solid var(--line);
@@ -226,7 +247,7 @@ input:focus {
 
 .chip {
   flex: none;
-  font: 500 14px 'Rubik', system-ui, sans-serif;
+  font: 500 14px "Rubik", system-ui, sans-serif;
   color: var(--text);
   background: transparent;
   border: 2px solid var(--line);
@@ -240,10 +261,10 @@ input:focus {
   border-color: var(--cyan);
 }
 
-.chip[aria-pressed='true'] {
+.chip[aria-pressed="true"] {
   background: var(--cyan);
   border-color: var(--cyan);
-  color: #120a2e;
+  color: var(--on-fill);
   font-weight: 500;
 }
 
@@ -293,9 +314,11 @@ main {
   justify-content: center;
   font-size: 56px;
   position: relative;
-  background: linear-gradient(135deg,
-      hsl(var(--h), 80%, 38%),
-      hsl(calc(var(--h) + 60), 75%, 18%));
+  background: linear-gradient(
+    135deg,
+    hsl(var(--h), 80%, 38%),
+    hsl(calc(var(--h) + 60), 75%, 18%)
+  );
 }
 
 .fav {
@@ -307,7 +330,7 @@ main {
   border-radius: 50%;
   border: 0;
   background: rgba(18, 10, 46, 0.6);
-  color: var(--text);
+  color: #efe8ff;
   font-size: 20px;
   cursor: pointer;
   line-height: 1;
@@ -318,7 +341,7 @@ main {
   top: 10px;
   left: 10px;
   background: var(--gold);
-  color: #120a2e;
+  color: var(--on-fill);
   font-size: 12px;
   font-weight: 500;
   padding: 2px 10px;
@@ -335,7 +358,7 @@ main {
 
 .body h3 {
   margin: 0;
-  font-family: 'Orbitron', system-ui, sans-serif;
+  font-family: "Orbitron", system-ui, sans-serif;
   font-size: 17px;
   line-height: 1.25;
 }
@@ -348,7 +371,7 @@ main {
 .syn {
   margin: 0;
   font-size: 14px;
-  color: #d9ceff;
+  color: var(--syn);
 }
 
 .plat {
@@ -394,7 +417,7 @@ dialog::backdrop {
 }
 
 dialog .cover {
-  aspect-ratio: 16/9
+  aspect-ratio: 16/9;
 }
 
 .dbody {
@@ -406,7 +429,7 @@ dialog .cover {
 
 .dbody h2 {
   margin: 0;
-  font-family: 'Orbitron', system-ui, sans-serif;
+  font-family: "Orbitron", system-ui, sans-serif;
   font-size: 22px;
 }
 
@@ -433,7 +456,7 @@ dialog .cover {
   border-radius: 50%;
   border: 0;
   background: rgba(18, 10, 46, 0.7);
-  color: var(--text);
+  color: #efe8ff;
   font-size: 20px;
   cursor: pointer;
 }
@@ -455,7 +478,7 @@ footer {
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover
+  object-fit: cover;
 }
 
 @media (min-width: 768px) {
@@ -534,10 +557,10 @@ footer {
 
 #random:hover {
   background: var(--pink);
-  color: #120a2e;
+  color: var(--on-fill);
 }
 
-.chip span[aria-hidden='true'] {
+.chip span[aria-hidden="true"] {
   margin-right: 2px;
 }
 
@@ -550,22 +573,27 @@ footer {
   margin-bottom: 20px;
   border: 2px solid var(--line);
   border-radius: 20px;
-  background:
-    linear-gradient(90deg, rgba(18, 10, 46, 0.95) 0%, rgba(18, 10, 46, 0.6) 45%, rgba(18, 10, 46, 0.1) 100%),
-    url('img/hero.jpeg') center right / cover no-repeat,
+  background: linear-gradient(
+      90deg,
+      rgba(18, 10, 46, 0.95) 0%,
+      rgba(18, 10, 46, 0.6) 45%,
+      rgba(18, 10, 46, 0.1) 100%
+    ),
+    url("img/hero.jpeg") center right / cover no-repeat,
     linear-gradient(135deg, #3a1470, var(--bg2));
   overflow: hidden;
+  color: #efe8ff;
 }
 
 .hero-kicker {
   margin: 0;
   color: #d65cff;
-  font: 700 18px 'Orbitron', system-ui, sans-serif;
+  font: 700 18px "Orbitron", system-ui, sans-serif;
 }
 
 .hero-title {
   margin: 6px 0 10px;
-  font: 900 clamp(26px, 4vw, 42px) 'Rubik', system-ui, sans-serif;
+  font: 900 clamp(26px, 4vw, 42px) "Rubik", system-ui, sans-serif;
   line-height: 1.1;
   max-width: 16ch;
 }
@@ -606,7 +634,7 @@ footer {
   border-radius: 50%;
   border: 2px solid var(--line);
   background: rgba(18, 10, 46, 0.7);
-  color: var(--text);
+  color: #efe8ff;
   font-size: 26px;
   line-height: 1;
   cursor: pointer;
@@ -639,7 +667,7 @@ footer {
   cursor: pointer;
 }
 
-.hero-dot[aria-current='true'] {
+.hero-dot[aria-current="true"] {
   background: #b43df0;
   box-shadow: 0 0 8px #b43df0;
 }
@@ -660,8 +688,8 @@ footer {
 .link-btn {
   background: none;
   border: 0;
-  color: #d65cff;
-  font: 500 14px 'Rubik', system-ui, sans-serif;
+  color: var(--accent);
+  font: 500 14px "Rubik", system-ui, sans-serif;
   cursor: pointer;
 }
 
@@ -674,9 +702,9 @@ footer {
   outline-offset: 2px;
 }
 
-.fav[aria-pressed='true'] {
-  color: var(--pink);
-  text-shadow: 0 0 10px var(--pink);
+.fav[aria-pressed="true"] {
+  color: #ff5aa8;
+  text-shadow: 0 0 10px #ff5aa8;
 }
 
 .hero-body {

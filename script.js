@@ -3,39 +3,42 @@ const $ = (id) => document.getElementById(id);
 let gens = new Set(),
   favs = new Set();
 try {
-  favs = new Set(JSON.parse(localStorage.getItem('zp_fav') || '[]'));
-} catch (e) { }
+  favs = new Set(JSON.parse(localStorage.getItem("zp_fav") || "[]"));
+} catch (e) {}
 
 function readURL() {
   const p = new URLSearchParams(location.search);
-  const g = p.get('genero');
-  gens = new Set(g ? g.split(',').filter(Boolean) : []);
-  $('pf').value = p.get('plataforma') || '';
-  $('q').value = p.get('busca') || '';
-  $('sort').value = p.get('ordem') || '';
+  const g = p.get("genero");
+  gens = new Set(g ? g.split(",").filter(Boolean) : []);
+  $("pf").value = p.get("plataforma") || "";
+  $("q").value = p.get("busca") || "";
+  $("sort").value = p.get("ordem") || "";
 }
 
 function writeURL(push) {
   const p = new URLSearchParams();
-  if (gens.size) p.set('genero', [...gens].join(','));
-  if ($('pf').value) p.set('plataforma', $('pf').value);
-  if ($('q').value.trim()) p.set('busca', $('q').value.trim());
-  if ($('sort').value) p.set('ordem', $('sort').value);
+  if (gens.size) p.set("genero", [...gens].join(","));
+  if ($("pf").value) p.set("plataforma", $("pf").value);
+  if ($("q").value.trim()) p.set("busca", $("q").value.trim());
+  if ($("sort").value) p.set("ordem", $("sort").value);
   const qs = p.toString();
-  const url = qs ? '?' + qs : location.pathname;
-  push ? history.pushState(null, '', url) : history.replaceState(null, '', url);
-  }
+  const url = qs ? "?" + qs : location.pathname;
+  push ? history.pushState(null, "", url) : history.replaceState(null, "", url);
+}
 
 function syncChips() {
-  [...$('chips').children].forEach((x) => {
+  [...$("chips").children].forEach((x) => {
     const t = x.dataset.tag;
-    x.setAttribute('aria-pressed', t === 'Todos' ? gens.size === 0 : gens.has(t));
+    x.setAttribute(
+      "aria-pressed",
+      t === "Todos" ? gens.size === 0 : gens.has(t)
+    );
   });
 }
 function clearFilters() {
   gens.clear();
-  $('pf').value = '';
-  $('q').value = '';
+  $("pf").value = "";
+  $("q").value = "";
   syncChips();
   render();
   writeURL(true);
@@ -53,103 +56,138 @@ function surprise() {
 }
 
 const ICONS = {
-  Todos: '▦', Favoritos: '💜', Aventura: '🧭', Ação: '⚔️', Drama: '🎭',
-  Esporte: '⚽', Estratégia: '♟️', FPS: '🎯', Grátis: '🎁', Indie: '🎮',
-  Interativo: '🕹️', Multiplayer: '👥', 'Mundo aberto': '🌍', Plataforma: '🧩',
-  RPG: '🛡️', Sandbox: '🧱', Simulação: '🏗️', Social: '💬', Tático: '📋',
+  Todos: "▦",
+  Favoritos: "💜",
+  Aventura: "🧭",
+  Ação: "⚔️",
+  Drama: "🎭",
+  Esporte: "⚽",
+  Estratégia: "♟️",
+  FPS: "🎯",
+  Grátis: "🎁",
+  Indie: "🎮",
+  Interativo: "🕹️",
+  Multiplayer: "👥",
+  "Mundo aberto": "🌍",
+  Plataforma: "🧩",
+  RPG: "🛡️",
+  Sandbox: "🧱",
+  Simulação: "🏗️",
+  Social: "💬",
+  Tático: "📋",
 };
 
 const SLIDES = [
-  { a: 'Encontre, explore e jogue ', b: 'sem limites!', t: 'Descubra os melhores jogos, e encontre sua próxima aventura.' },
-  { a: 'Não sabe o que jogar? ', b: 'Surpreenda-se!', t: 'Use o botão Surpreenda-me e deixe o acaso escolher por você.' },
-  { a: 'Guarde seus ', b: 'favoritos', t: 'Marque com o coração os jogos que você quer jogar depois.' },
-  { a: 'Filtre por ', b: 'gênero e plataforma', t: 'Ache rápido o que combina com o seu console ou PC.' },
+  {
+    a: "Encontre, explore e jogue ",
+    b: "sem limites!",
+    t: "Descubra os melhores jogos, e encontre sua próxima aventura.",
+  },
+  {
+    a: "Não sabe o que jogar? ",
+    b: "Surpreenda-se!",
+    t: "Use o botão Surpreenda-me e deixe o acaso escolher por você.",
+  },
+  {
+    a: "Guarde seus ",
+    b: "favoritos",
+    t: "Marque com o coração os jogos que você quer jogar depois.",
+  },
+  {
+    a: "Filtre por ",
+    b: "gênero e plataforma",
+    t: "Ache rápido o que combina com o seu console ou PC.",
+  },
 ];
 
 function initHero() {
-  const title = document.getElementById('hero-title');
-  const text = document.getElementById('hero-text');
-  const dots = document.getElementById('hero-dots');
+  const title = document.getElementById("hero-title");
+  const text = document.getElementById("hero-text");
+  const dots = document.getElementById("hero-dots");
   let cur = 0;
 
   function show(i) {
     cur = (i + SLIDES.length) % SLIDES.length;
     const s = SLIDES[cur];
-    const span = document.createElement('span');
+    const span = document.createElement("span");
     span.textContent = s.b;
     title.replaceChildren(s.a, span);
     text.textContent = s.t;
     [...dots.children].forEach((d, n) =>
-      d.setAttribute('aria-current', n === cur ? 'true' : 'false'));
+      d.setAttribute("aria-current", n === cur ? "true" : "false")
+    );
   }
 
   SLIDES.forEach((_, n) => {
-    const d = document.createElement('button');
-    d.type = 'button';
-    d.className = 'hero-dot';
-    d.setAttribute('aria-label', 'Slide ' + (n + 1));
+    const d = document.createElement("button");
+    d.type = "button";
+    d.className = "hero-dot";
+    d.setAttribute("aria-label", "Slide " + (n + 1));
     d.onclick = () => show(n);
     dots.append(d);
   });
 
-  document.getElementById('hero-prev').onclick = () => show(cur - 1);
-  document.getElementById('hero-next').onclick = () => show(cur + 1);
+  document.getElementById("hero-prev").onclick = () => show(cur - 1);
+  document.getElementById("hero-next").onclick = () => show(cur + 1);
   show(0);
 }
 
 async function init() {
   try {
-    const res = await fetch('games.json');
+    const res = await fetch("games.json");
     if (!res.ok) throw new Error(res.status);
     G = await res.json();
     readURL();
     const generos = [...new Set(G.flatMap((g) => g.t))];
-    const validos = new Set([...generos, 'Favoritos']);
+    const validos = new Set([...generos, "Favoritos"]);
     gens = new Set([...gens].filter((t) => validos.has(t)));
   } catch (e) {
-    $('count').textContent = 'Não foi possível carregar os jogos.';
+    $("count").textContent = "Não foi possível carregar os jogos.";
     return;
   }
 
   const tags = [
-    'Todos',
-    'Favoritos',
+    "Todos",
+    "Favoritos",
     ...[...new Set(G.flatMap((g) => g.t))].sort(),
   ];
   const plats = [...new Set(G.flatMap((g) => g.p))];
   plats.forEach((p) => {
-    const o = document.createElement('option');
+    const o = document.createElement("option");
     o.value = p;
     o.textContent = p;
-    $('pf').appendChild(o);
+    $("pf").appendChild(o);
   });
-  $('pf').value = new URLSearchParams(location.search).get('plataforma') || '';
+  $("pf").value = new URLSearchParams(location.search).get("plataforma") || "";
   tags.forEach((t) => {
-    const b = document.createElement('button');
-    b.className = 'chip';
+    const b = document.createElement("button");
+    b.className = "chip";
     b.dataset.tag = t;
-    const ic = document.createElement('span');
-    ic.setAttribute('aria-hidden', 'true');
-    ic.textContent = ICONS[t] || '🎮';
-    b.append(ic, ' ' + t);
-    b.setAttribute('aria-pressed', t === 'Todos' ? gens.size === 0 : gens.has(t));
+    const ic = document.createElement("span");
+    ic.setAttribute("aria-hidden", "true");
+    ic.textContent = ICONS[t] || "🎮";
+    b.append(ic, " " + t);
+    b.setAttribute(
+      "aria-pressed",
+      t === "Todos" ? gens.size === 0 : gens.has(t)
+    );
     b.onclick = () => {
-      if (t === 'Todos') gens.clear();
+      if (t === "Todos") gens.clear();
       else if (gens.has(t)) gens.delete(t);
       else gens.add(t);
       syncChips();
       render();
       writeURL(true);
     };
-    $('chips').appendChild(b);
+    $("chips").appendChild(b);
   });
 
   render();
 }
 function saveFav() {
   try {
-    localStorage.setItem('zp_fav', JSON.stringify([...favs]));
-  } catch (e) { }
+    localStorage.setItem("zp_fav", JSON.stringify([...favs]));
+  } catch (e) {}
 }
 function toggleFav(n) {
   favs.has(n) ? favs.delete(n) : favs.add(n);
@@ -162,35 +200,36 @@ const art = (g) =>
     : `<span aria-hidden="true">${g.e}</span>`;
 
 const sorters = {
-  nome: (a, b) => a.n.localeCompare(b.n, 'pt-BR'),
-  novos: (a, b) => b.y - a.y || a.n.localeCompare(b.n, 'pt-BR'),
-  antigos: (a, b) => a.y - b.y || a.n.localeCompare(b.n, 'pt-BR'),
-}
+  nome: (a, b) => a.n.localeCompare(b.n, "pt-BR"),
+  novos: (a, b) => b.y - a.y || a.n.localeCompare(b.n, "pt-BR"),
+  antigos: (a, b) => a.y - b.y || a.n.localeCompare(b.n, "pt-BR"),
+};
 
 function makeCard(g) {
-  const c = document.createElement('div'); // Apenas uma vez!
-  c.className = 'card';
+  const c = document.createElement("div"); // Apenas uma vez!
+  c.className = "card";
   c.tabIndex = 0;
-  c.setAttribute('role', 'button');
-  c.setAttribute('aria-label', 'Ver detalhes de ' + g.n);
-  c.innerHTML = `<div class="cover" style="--h:${g.h}">${g.f ? '<span class="free">Grátis</span>' : ''
-    }${art(g)}<button class="fav" aria-pressed="${favs.has(
-      g.n
-    )}" aria-label="Favoritar ${g.n}">${favs.has(g.n) ? '♥' : '♡'
-    }</button></div>
+  c.setAttribute("role", "button");
+  c.setAttribute("aria-label", "Ver detalhes de " + g.n);
+  c.innerHTML = `<div class="cover" style="--h:${g.h}">${
+    g.f ? '<span class="free">Grátis</span>' : ""
+  }${art(g)}<button class="fav" aria-pressed="${favs.has(
+    g.n
+  )}" aria-label="Favoritar ${g.n}">${favs.has(g.n) ? "♥" : "♡"}</button></div>
 <div class="body"><h3>${g.n}</h3><div class="meta">${g.y} · ${g.t
-      .slice(0, 2)
-      .join(' / ')}</div><p class="syn">${g.s.length > 110 ? g.s.slice(0, 107) + '…' : g.s
-    }</p><div class="plat">${g.p
-      .map((p) => `<span class="pl">${p}</span>`)
-      .join('')}</div></div>`;
-  c.querySelector('.fav').onclick = (e) => {
+    .slice(0, 2)
+    .join(" / ")}</div><p class="syn">${
+    g.s.length > 110 ? g.s.slice(0, 107) + "…" : g.s
+  }</p><div class="plat">${g.p
+    .map((p) => `<span class="pl">${p}</span>`)
+    .join("")}</div></div>`;
+  c.querySelector(".fav").onclick = (e) => {
     e.stopPropagation();
     toggleFav(g.n);
   };
   c.onclick = () => open(g);
   c.onkeydown = (e) => {
-    if (e.target === c && (e.key === 'Enter' || e.key === ' ')) {
+    if (e.target === c && (e.key === "Enter" || e.key === " ")) {
       e.preventDefault();
       open(g);
     }
@@ -200,96 +239,117 @@ function makeCard(g) {
 
 function renderFeatured() {
   const feat = G.filter((g) => g.d);
-  const noFilters = !(gens.size || $('pf').value || $('q').value.trim());
-  $('featured').hidden = !(noFilters && feat.length);
-  const row = $('feat-row');
+  const noFilters = !(gens.size || $("pf").value || $("q").value.trim());
+  $("featured").hidden = !(noFilters && feat.length);
+  const row = $("feat-row");
   row.replaceChildren();
   feat.forEach((g) => row.append(makeCard(g)));
 }
 
 function render() {
-  const q = $('q').value.trim().toLowerCase(),
-    pf = $('pf').value;
-  $('clear').hidden = !(gens.size || pf || q);
+  const q = $("q").value.trim().toLowerCase(),
+    pf = $("pf").value;
+  $("clear").hidden = !(gens.size || pf || q);
   renderFeatured();
-  const onlyFav = gens.size === 1 && gens.has('Favoritos');
-  $('nav-home').setAttribute('aria-current', !onlyFav);
-  $('nav-fav').setAttribute('aria-current', onlyFav);
+  const onlyFav = gens.size === 1 && gens.has("Favoritos");
+  $("nav-home").setAttribute("aria-current", !onlyFav);
+  $("nav-fav").setAttribute("aria-current", onlyFav);
   const L = G.filter(
     (g) =>
       [...gens].every((t) =>
-        t === 'Favoritos' ? favs.has(g.n) : g.t.includes(t)
+        t === "Favoritos" ? favs.has(g.n) : g.t.includes(t)
       ) &&
       (!pf || g.p.includes(pf)) &&
       (!q ||
-        (g.n + ' ' + g.t.join(' ') + ' ' + g.p.join(' ') + ' ' + g.s)
+        (g.n + " " + g.t.join(" ") + " " + g.p.join(" ") + " " + g.s)
           .toLowerCase()
           .includes(q))
   );
-  const so = $('sort').value;
+  const so = $("sort").value;
   if (sorters[so]) L.sort(sorters[so]);
-  $('count').textContent =
-    L.length + (L.length === 1 ? ' jogo encontrado' : ' jogos encontrados');
-  const gr = $('grid');
-  gr.innerHTML = '';
+  $("count").textContent =
+    L.length + (L.length === 1 ? " jogo encontrado" : " jogos encontrados");
+  const gr = $("grid");
+  gr.innerHTML = "";
   if (!L.length) {
     gr.innerHTML =
       '<div class="empty"><p>Nenhum jogo encontrado. Tente outro termo ou limpe os filtros.</p><button class="chip" id="clear2" type="button">Limpar filtros</button></div>';
-    $('clear2').onclick = clearFilters;
+    $("clear2").onclick = clearFilters;
     return;
   }
   L.forEach((g) => {
-        gr.appendChild(makeCard(g));
+    gr.appendChild(makeCard(g));
   });
 }
 function open(g) {
-  $('dc').innerHTML = `<div class="cover" style="--h:${g.h}">${art(
+  $("dc").innerHTML = `<div class="cover" style="--h:${g.h}">${art(
     g
   )}<button class="close" aria-label="Fechar">✕</button></div>
 <div class="dbody"><h2>${g.n}</h2><div class="meta">${g.y} · ${g.t.join(
-    ' / '
-  )}${g.f ? ' · Grátis para jogar' : ''}</div>
+    " / "
+  )}${g.f ? " · Grátis para jogar" : ""}</div>
 <div><h4>Sinopse</h4><p class="syn">${g.s}</p></div>
 <div><h4>Onde jogar</h4><div class="plat">${g.p
-      .map((p) => `<span class="pl">${p}</span>`)
-      .join('')}</div></div>
-<button class="chip dfav" id="df" aria-pressed="${favs.has(g.n)}">${favs.has(g.n) ? '♥ Nos favoritos' : '♡ Adicionar aos favoritos'
-    }</button></div>`;
-  $('dc').querySelector('.close').onclick = () => $('dlg').close();
-  $('df').onclick = () => {
+    .map((p) => `<span class="pl">${p}</span>`)
+    .join("")}</div></div>
+<button class="chip dfav" id="df" aria-pressed="${favs.has(g.n)}">${
+    favs.has(g.n) ? "♥ Nos favoritos" : "♡ Adicionar aos favoritos"
+  }</button></div>`;
+  $("dc").querySelector(".close").onclick = () => $("dlg").close();
+  $("df").onclick = () => {
     toggleFav(g.n);
     open(g);
   };
-  if (!$('dlg').open) $('dlg').showModal();
+  if (!$("dlg").open) $("dlg").showModal();
 }
-$('dlg').addEventListener('click', (e) => {
-  if (e.target === $('dlg')) $('dlg').close();
+$("dlg").addEventListener("click", (e) => {
+  if (e.target === $("dlg")) $("dlg").close();
 });
-$('q').oninput = () => {
+$("q").oninput = () => {
   render();
   writeURL(false);
 };
-$('pf').onchange = () => {
+$("pf").onchange = () => {
   render();
   writeURL(true);
 };
-$('sort').onchange = () => {
+$("sort").onchange = () => {
   render();
   writeURL(true);
 };
-window.addEventListener('popstate', () => {
+window.addEventListener("popstate", () => {
   readURL();
   syncChips();
   render();
 });
-$('clear').onclick = clearFilters;
-$('random').onclick = surprise;
-$('nav-home').onclick = clearFilters;
-$('nav-fav').onclick = () => {
-  gens = new Set(['Favoritos']);
+$("clear").onclick = clearFilters;
+$("random").onclick = surprise;
+$("nav-home").onclick = clearFilters;
+$("nav-fav").onclick = () => {
+  gens = new Set(["Favoritos"]);
   syncChips();
   render();
   writeURL(true);
 };
+
+function applyTheme(t) {
+  document.documentElement.dataset.theme = t;
+  $("theme").textContent = t === "dark" ? "☀️" : "🌙";
+  $("theme").setAttribute(
+    "aria-label",
+    t === "dark" ? "Mudar para o tema claro" : "Mudar para o tema escuro"
+  );
+}
+
+$("theme").onclick = () => {
+  const t =
+    document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+  applyTheme(t);
+  try {
+    localStorage.setItem("zp_theme", t);
+  } catch (e) {}
+};
+
+applyTheme(document.documentElement.dataset.theme || "dark");
 init();
 initHero();
