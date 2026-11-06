@@ -88,25 +88,30 @@ const SLIDES = [
     a: "Encontre, explore e jogue ",
     b: "sem limites!",
     t: "Descubra os melhores jogos, e encontre sua próxima aventura.",
+    img: "img/hero.jpeg"
   },
   {
     a: "Não sabe o que jogar? ",
     b: "Surpreenda-se!",
     t: "Use o botão Surpreenda-me e deixe o acaso escolher por você.",
+    img: "img/hero2.jpeg"
   },
   {
     a: "Guarde seus ",
     b: "favoritos",
     t: "Marque com o coração os jogos que você quer jogar depois.",
+    img: "img/hero3.jpeg"
   },
   {
     a: "Filtre por ",
     b: "gênero e plataforma",
     t: "Ache rápido o que combina com o seu console ou PC.",
+    img: "img/hero4.jpeg"
   },
 ];
 
 function initHero() {
+  const hero = document.querySelector(".hero");  
   const title = document.getElementById("hero-title");
   const text = document.getElementById("hero-text");
   const dots = document.getElementById("hero-dots");
@@ -119,6 +124,7 @@ function initHero() {
     span.textContent = s.b;
     title.replaceChildren(s.a, span);
     text.textContent = s.t;
+    hero.style.setProperty("--hero-img", `url("${s.img}")`);
     [...dots.children].forEach((d, n) =>
       d.setAttribute("aria-current", n === cur ? "true" : "false")
     );
@@ -136,6 +142,24 @@ function initHero() {
   document.getElementById("hero-prev").onclick = () => show(cur - 1);
   document.getElementById("hero-next").onclick = () => show(cur + 1);
   show(0);
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let timer;
+
+  function stop() {
+    clearInterval(timer);
+  }
+
+  function start() {
+    if (reduce) return;
+    stop();
+    timer = setInterval(() => show(cur + 1), 4000);
+  }
+
+  hero.addEventListener("mouseenter", stop);
+  hero.addEventListener("mouseleave", start);
+  hero.addEventListener("focusin", stop);
+  hero.addEventListener("focusout", start);
+  start();
 }
 
 async function init() {

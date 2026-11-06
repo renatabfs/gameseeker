@@ -153,12 +153,9 @@ html {
 
 body {
   margin: 0;
-  background: radial-gradient(
-      ellipse at 50% -10%,
+  background: radial-gradient(ellipse at 50% -10%,
       var(--glow) 0%,
-      var(--bg) 55%
-    )
-    fixed;
+      var(--bg) 55%) fixed;
   color: var(--text);
   font-family: "Rubik", system-ui, sans-serif;
   line-height: 1.5;
@@ -316,11 +313,9 @@ main {
   justify-content: center;
   font-size: 56px;
   position: relative;
-  background: linear-gradient(
-    135deg,
-    hsl(var(--h), 80%, 38%),
-    hsl(calc(var(--h) + 60), 75%, 18%)
-  );
+  background: linear-gradient(135deg,
+      hsl(var(--h), 80%, 38%),
+      hsl(calc(var(--h) + 60), 75%, 18%));
 }
 
 .fav {
@@ -585,6 +580,7 @@ footer {
 
 .hero {
   position: relative;
+  transition: background-image 0.4s;
   display: flex;
   align-items: center;
   min-height: 260px;
@@ -592,13 +588,11 @@ footer {
   margin-bottom: 20px;
   border: 2px solid var(--line);
   border-radius: 20px;
-  background: linear-gradient(
-      90deg,
+  background: linear-gradient(90deg,
       rgba(18, 10, 46, 0.95) 0%,
       rgba(18, 10, 46, 0.6) 45%,
-      rgba(18, 10, 46, 0.1) 100%
-    ),
-    url("img/hero.jpeg") center right / cover no-repeat,
+      rgba(18, 10, 46, 0.1) 100%),
+    var(--hero-img, url("img/hero1.jpeg")) center right / cover no-repeat,
     linear-gradient(135deg, #3a1470, var(--bg2));
   overflow: hidden;
   color: #efe8ff;
@@ -753,6 +747,7 @@ footer {
 #sobre {
   scroll-margin-top: 110px;
 }
+
 #all {
   scroll-margin-top: 110px;
 }
@@ -856,11 +851,13 @@ footer {
 }
 
 @media (max-width: 800px) {
+
   .side-card,
   .brand-ic {
     display: none;
   }
 }
+
 .ic {
   width: 1.15em;
   height: 1.15em;
@@ -898,6 +895,7 @@ footer {
 .hero-cta .ic {
   fill: currentColor;
 }
+
 .filters-head h2,
 .section-title {
   display: flex;
@@ -916,6 +914,7 @@ footer {
   margin-right: 4px;
   color: var(--pink);
 }
+
 .section-title,
 .filters-head h2 {
   font-weight: 700;
