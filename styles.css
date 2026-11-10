@@ -938,3 +938,8 @@ footer {
   color: var(--text);
   text-shadow: 2px 2px 0 rgba(214, 23, 111, 0.35);
 }
+.rel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}

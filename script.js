@@ -4,7 +4,7 @@ let gens = new Set(),
   favs = new Set();
 try {
   favs = new Set(JSON.parse(localStorage.getItem("zp_fav") || "[]"));
-} catch (e) {}
+} catch (e) { }
 
 function readURL() {
   const p = new URLSearchParams(location.search);
@@ -111,7 +111,7 @@ const SLIDES = [
 ];
 
 function initHero() {
-  const hero = document.querySelector(".hero");  
+  const hero = document.querySelector(".hero");
   const title = document.getElementById("hero-title");
   const text = document.getElementById("hero-text");
   const dots = document.getElementById("hero-dots");
@@ -217,7 +217,7 @@ async function init() {
 function saveFav() {
   try {
     localStorage.setItem("zp_fav", JSON.stringify([...favs]));
-  } catch (e) {}
+  } catch (e) { }
 }
 function toggleFav(n) {
   favs.has(n) ? favs.delete(n) : favs.add(n);
@@ -241,21 +241,18 @@ function makeCard(g) {
   c.tabIndex = 0;
   c.setAttribute("role", "button");
   c.setAttribute("aria-label", "Ver detalhes de " + g.n);
-  c.innerHTML = `<div class="cover" style="--h:${g.h}">${
-    g.f ? '<span class="free">Grátis</span>' : ""
-  }${art(g)}<button class="fav" aria-pressed="${favs.has(
-    g.n
-  )}" aria-label="Favoritar ${g.n}">${favs.has(g.n) ? "♥" : "♡"}</button></div>
+  c.innerHTML = `<div class="cover" style="--h:${g.h}">${g.f ? '<span class="free">Grátis</span>' : ""
+    }${art(g)}<button class="fav" aria-pressed="${favs.has(
+      g.n
+    )}" aria-label="Favoritar ${g.n}">${favs.has(g.n) ? "♥" : "♡"}</button></div>
 <div class="body"><h3>${g.n}</h3><div class="meta">${g.y} · ${g.t
-    .slice(0, 2)
-    .join(" / ")}</div><p class="syn">${
-    g.s.length > 110 ? g.s.slice(0, 107) + "…" : g.s
-  }</p><div class="plat">${g.p
-    .slice(0, 4)
-    .map((p) => `<span class="pl">${p}</span>`)
-    .join("")}${
-    g.p.length > 4 ? `<span class="pl">+${g.p.length - 4}</span>` : ""
-  }</div></div>`;
+      .slice(0, 2)
+      .join(" / ")}</div><p class="syn">${g.s.length > 110 ? g.s.slice(0, 107) + "…" : g.s
+    }</p><div class="plat">${g.p
+      .slice(0, 4)
+      .map((p) => `<span class="pl">${p}</span>`)
+      .join("")}${g.p.length > 4 ? `<span class="pl">+${g.p.length - 4}</span>` : ""
+    }</div></div>`;
   c.querySelector(".fav").onclick = (e) => {
     e.stopPropagation();
     toggleFav(g.n);
@@ -314,6 +311,27 @@ function render() {
     gr.appendChild(makeCard(g));
   });
 }
+
+function related(g) {
+  return G.filter((x) => x.n !== g.n)
+    .map((x) => ({ x, score: x.t.filter((t) => g.t.includes(t)).length }))
+    .filter((r) => r.score > 0)
+    .sort((a, b) => b.score - a.score || b.x.y - a.x.y)
+    .slice(0, 3)
+    .map((r) => r.x);
+}
+
+function relatedHTML(g) {
+  const list = related(g);
+  if (!list.length) return "";
+  return `<div><h4>Jogos parecidos</h4><div class="rel">${list
+    .map(
+      (r) =>
+        `<button class="chip" type="button" data-i="${G.indexOf(r)}">${r.n}</button>`
+    )
+    .join("")}</div></div>`;
+}
+
 function open(g) {
   $("dc").innerHTML = `<div class="cover" style="--h:${g.h}">${art(
     g
@@ -323,12 +341,15 @@ function open(g) {
   )}${g.f ? " · Grátis para jogar" : ""}</div>
 <div><h4>Sinopse</h4><p class="syn">${g.s}</p></div>
 <div><h4>Onde jogar</h4><div class="plat">${g.p
-    .map((p) => `<span class="pl">${p}</span>`)
-    .join("")}</div></div>
-<button class="chip dfav" id="df" aria-pressed="${favs.has(g.n)}">${
-    favs.has(g.n) ? "♥ Nos favoritos" : "♡ Adicionar aos favoritos"
-  }</button></div>`;
+      .map((p) => `<span class="pl">${p}</span>`)
+      .join("")}</div></div>
+      ${relatedHTML(g)}
+<button class="chip dfav" id="df" aria-pressed="${favs.has(g.n)}">${favs.has(g.n) ? "♥ Nos favoritos" : "♡ Adicionar aos favoritos"
+    }</button></div>`;
   $("dc").querySelector(".close").onclick = () => $("dlg").close();
+  $("dc").querySelectorAll(".rel .chip").forEach((b) => {
+    b.onclick = () => open(G[b.dataset.i]);
+  });
   $("df").onclick = () => {
     toggleFav(g.n);
     open(g);
@@ -380,7 +401,7 @@ $("theme").onclick = () => {
   applyTheme(t);
   try {
     localStorage.setItem("zp_theme", t);
-  } catch (e) {}
+  } catch (e) { }
 };
 
 $("chips-more").onclick = () => {
