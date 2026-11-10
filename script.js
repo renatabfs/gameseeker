@@ -226,8 +226,8 @@ function toggleFav(n) {
 }
 const art = (g) =>
   g.img
-    ? `<img class="art" src="${g.img}" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'${g.e}'}))">`
-    : `<span aria-hidden="true">${g.e}</span>`;
+    ? `<img class="art" src="${g.img}" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'${g.e || "🎮"}'}))">`
+    : `<span aria-hidden="true">${g.e || "🎮"}</span>`;
 
 const sorters = {
   nome: (a, b) => a.n.localeCompare(b.n, "pt-BR"),

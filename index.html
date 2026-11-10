@@ -1,376 +1,313 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, viewport-fit=cover"
-    />
-    <title>GameSeeker · Descubra seu próximo jogo</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rubik:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
-    <script>
-      try {
-        var t =
-          localStorage.getItem("zp_theme") ||
-          (matchMedia("(prefers-color-scheme: light)").matches
-            ? "light"
-            : "dark");
-        document.documentElement.dataset.theme = t;
-      } catch (e) {
-        document.documentElement.dataset.theme = "dark";
-      }
-    </script>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
 
-  <body>
-    <svg width="0" height="0" style="position: absolute" aria-hidden="true">
-      <symbol id="i-home" viewBox="0 0 24 24">
-        <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-        <path d="M9 22V12h6v10" />
-      </symbol>
-      <symbol id="i-heart" viewBox="0 0 24 24">
-        <path
-          d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"
-        />
-      </symbol>
-      <symbol id="i-grid" viewBox="0 0 24 24">
-        <rect width="7" height="7" x="3" y="3" rx="1" />
-        <rect width="7" height="7" x="14" y="3" rx="1" />
-        <rect width="7" height="7" x="14" y="14" rx="1" />
-        <rect width="7" height="7" x="3" y="14" rx="1" />
-      </symbol>
-      <symbol id="i-info" viewBox="0 0 24 24">
-        <circle cx="12" cy="12" r="10" />
-        <path d="M12 16v-4M12 8h.01" />
-      </symbol>
-      <symbol id="i-search" viewBox="0 0 24 24">
-        <circle cx="11" cy="11" r="8" />
-        <path d="m21 21-4.3-4.3" />
-      </symbol>
-      <symbol id="i-moon" viewBox="0 0 24 24">
-        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
-      </symbol>
-      <symbol id="i-sun" viewBox="0 0 24 24">
-        <circle cx="12" cy="12" r="4" />
-        <path
-          d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
-        />
-      </symbol>
-      <symbol id="i-star" viewBox="0 0 24 24">
-        <path
-          d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"
-        />
-      </symbol>
-      <symbol id="i-dice" viewBox="0 0 24 24">
-        <rect width="18" height="18" x="3" y="3" rx="3" />
-        <circle cx="8.5" cy="8.5" r="1" fill="currentColor" />
-        <circle cx="15.5" cy="8.5" r="1" fill="currentColor" />
-        <circle cx="12" cy="12" r="1" fill="currentColor" />
-        <circle cx="8.5" cy="15.5" r="1" fill="currentColor" />
-        <circle cx="15.5" cy="15.5" r="1" fill="currentColor" />
-      </symbol>
-      <symbol id="i-filter" viewBox="0 0 24 24">
-        <path d="M22 3H2l8 9.46V19l4 2v-8.54z" />
-      </symbol>
-      <symbol id="i-library" viewBox="0 0 24 24">
-        <path d="m16 6 4 14M12 6v14M8 8v12M4 4v16" />
-      </symbol>
-      <symbol id="i-rocket" viewBox="0 0 24 24">
-        <path
-          d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"
-        />
-        <path
-          d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"
-        />
-        <path
-          d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"
-        />
-      </symbol>
-      <symbol id="i-gamepad" viewBox="0 0 24 24">
-        <path d="M6 11h4M8 9v4M15 12h.01M18 10h.01" />
-        <path
-          d="M17.32 5H6.68a4 4 0 0 0-3.98 3.59C2.6 9.42 2 14.46 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.41-1.41A2 2 0 0 1 9.83 16h4.34a2 2 0 0 1 1.42.59L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.55-.6-6.58-.69-7.26A4 4 0 0 0 17.32 5z"
-        />
-      </symbol>
-      <symbol id="i-compass" viewBox="0 0 24 24">
-        <circle cx="12" cy="12" r="10" />
-        <path d="m16.24 7.76-2.12 6.36-6.36 2.12 2.12-6.36z" />
-      </symbol>
-      <symbol id="i-crosshair" viewBox="0 0 24 24">
-        <circle cx="12" cy="12" r="10" />
-        <path d="M22 12h-4M6 12H2M12 6V2M12 22v-4" />
-      </symbol>
-      <symbol id="i-target" viewBox="0 0 24 24">
-        <circle cx="12" cy="12" r="10" />
-        <circle cx="12" cy="12" r="6" />
-        <circle cx="12" cy="12" r="2" />
-      </symbol>
-      <symbol id="i-shield" viewBox="0 0 24 24">
-        <path
-          d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
-        />
-      </symbol>
-      <symbol id="i-pawn" viewBox="0 0 24 24">
-        <path
-          d="M5 20a1 1 0 0 1-1-1v-1a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v1a1 1 0 0 1-1 1zM14.5 10l1.5 6M7 10h10M8 16l1.5-6"
-        />
-        <circle cx="12" cy="6" r="4" />
-      </symbol>
-      <symbol id="i-users" viewBox="0 0 24 24">
-        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-        <circle cx="9" cy="7" r="4" />
-        <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
-      </symbol>
-      <symbol id="i-gift" viewBox="0 0 24 24">
-        <rect x="3" y="8" width="18" height="4" rx="1" />
-        <path
-          d="M12 8v13M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"
-        />
-      </symbol>
-      <symbol id="i-globe" viewBox="0 0 24 24">
-        <circle cx="12" cy="12" r="10" />
-        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20M2 12h20" />
-      </symbol>
-      <symbol id="i-chat" viewBox="0 0 24 24">
-        <path
-          d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
-        />
-      </symbol>
-      <symbol id="i-box" viewBox="0 0 24 24">
-        <path
-          d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
-        />
-        <path d="m3.3 7 8.7 5 8.7-5M12 22V12" />
-      </symbol>
-      <symbol id="i-car" viewBox="0 0 24 24">
-        <path
-          d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"
-        />
-        <circle cx="7" cy="17" r="2" />
-        <path d="M9 17h6" />
-        <circle cx="17" cy="17" r="2" />
-      </symbol>
-      <symbol id="i-trophy" viewBox="0 0 24 24">
-        <path
-          d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6M18 9h1.5a2.5 2.5 0 0 0 0-5H18M4 22h16M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22M18 2H6v7a6 6 0 0 0 12 0V2Z"
-        />
-      </symbol>
-      <symbol id="i-drama" viewBox="0 0 24 24">
-        <path
-          d="M10 11h.01M14 6h.01M18 6h.01M6.5 13.1h.01M22 5c0 9-4 12-6 12s-6-3-6-12c0-2 2-3 6-3s6 1 6 3"
-        />
-        <path
-          d="M17.5 10.5c-.5.5-1.5.5-2 0M2 9.5v4c0 5 3.5 8 7 8 1.5 0 2.7-.5 3.7-1.3"
-        />
-      </symbol>
-      <symbol id="i-flame" viewBox="0 0 24 24">
-        <path
-          d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14-.22-4.05 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.15.43-2.29 1-3a2.5 2.5 0 0 0 2.5 2.5z"
-        />
-      </symbol>
-      <symbol id="i-sword" viewBox="0 0 24 24">
-        <path d="m14.5 17.5-11-11V3h3.5l11 11M13 19l6-6M16 16l4 4M19 21l2-2" />
-      </symbol>
-      <symbol id="i-pointer" viewBox="0 0 24 24">
-        <path d="m3 3 7.07 16.97 2.51-7.39 7.39-2.51L3 3z" />
-      </symbol>
-      <symbol id="i-stairs" viewBox="0 0 24 24">
-        <path d="M2 21h5v-6h5V9h5V3h5" />
-      </symbol>
-      <symbol id="i-building" viewBox="0 0 24 24">
-        <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" />
-        <path
-          d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2M10 6h4M10 10h4M10 14h4M10 18h4"
-        />
-      </symbol>
-      <symbol id="i-clipboard" viewBox="0 0 24 24">
-        <rect width="8" height="4" x="8" y="2" rx="1" />
-        <path
-          d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2M12 11h4M12 16h4M8 11h.01M8 16h.01"
-        />
-      </symbol>
-    </svg>
-    <div class="app">
-      <aside class="side">
-        <a class="brand" href="./" aria-label="GameSeeker, ir para o início">
-          <svg class="ic brand-ic" aria-hidden="true">
-            <use href="#i-gamepad" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>GameSeeker · Descubra seu próximo jogo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rubik:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <script>
+    try {
+      var t =
+        localStorage.getItem("zp_theme") ||
+        (matchMedia("(prefers-color-scheme: light)").matches
+          ? "light"
+          : "dark");
+      document.documentElement.dataset.theme = t;
+    } catch (e) {
+      document.documentElement.dataset.theme = "dark";
+    }
+  </script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+    <symbol id="i-home" viewBox="0 0 24 24">
+      <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+      <path d="M9 22V12h6v10" />
+    </symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24">
+      <path
+        d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+    </symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24">
+      <rect width="7" height="7" x="3" y="3" rx="1" />
+      <rect width="7" height="7" x="14" y="3" rx="1" />
+      <rect width="7" height="7" x="14" y="14" rx="1" />
+      <rect width="7" height="7" x="3" y="14" rx="1" />
+    </symbol>
+    <symbol id="i-info" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10" />
+      <path d="M12 16v-4M12 8h.01" />
+    </symbol>
+    <symbol id="i-search" viewBox="0 0 24 24">
+      <circle cx="11" cy="11" r="8" />
+      <path d="m21 21-4.3-4.3" />
+    </symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24">
+      <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+    </symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="4" />
+      <path
+        d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+    </symbol>
+    <symbol id="i-star" viewBox="0 0 24 24">
+      <path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z" />
+    </symbol>
+    <symbol id="i-dice" viewBox="0 0 24 24">
+      <rect width="18" height="18" x="3" y="3" rx="3" />
+      <circle cx="8.5" cy="8.5" r="1" fill="currentColor" />
+      <circle cx="15.5" cy="8.5" r="1" fill="currentColor" />
+      <circle cx="12" cy="12" r="1" fill="currentColor" />
+      <circle cx="8.5" cy="15.5" r="1" fill="currentColor" />
+      <circle cx="15.5" cy="15.5" r="1" fill="currentColor" />
+    </symbol>
+    <symbol id="i-filter" viewBox="0 0 24 24">
+      <path d="M22 3H2l8 9.46V19l4 2v-8.54z" />
+    </symbol>
+    <symbol id="i-library" viewBox="0 0 24 24">
+      <path d="m16 6 4 14M12 6v14M8 8v12M4 4v16" />
+    </symbol>
+    <symbol id="i-rocket" viewBox="0 0 24 24">
+      <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
+      <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
+      <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
+    </symbol>
+    <symbol id="i-gamepad" viewBox="0 0 24 24">
+      <path d="M6 11h4M8 9v4M15 12h.01M18 10h.01" />
+      <path
+        d="M17.32 5H6.68a4 4 0 0 0-3.98 3.59C2.6 9.42 2 14.46 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.41-1.41A2 2 0 0 1 9.83 16h4.34a2 2 0 0 1 1.42.59L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.55-.6-6.58-.69-7.26A4 4 0 0 0 17.32 5z" />
+    </symbol>
+    <symbol id="i-compass" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10" />
+      <path d="m16.24 7.76-2.12 6.36-6.36 2.12 2.12-6.36z" />
+    </symbol>
+    <symbol id="i-crosshair" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10" />
+      <path d="M22 12h-4M6 12H2M12 6V2M12 22v-4" />
+    </symbol>
+    <symbol id="i-target" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10" />
+      <circle cx="12" cy="12" r="6" />
+      <circle cx="12" cy="12" r="2" />
+    </symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24">
+      <path
+        d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+    </symbol>
+    <symbol id="i-pawn" viewBox="0 0 24 24">
+      <path
+        d="M5 20a1 1 0 0 1-1-1v-1a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v1a1 1 0 0 1-1 1zM14.5 10l1.5 6M7 10h10M8 16l1.5-6" />
+      <circle cx="12" cy="6" r="4" />
+    </symbol>
+    <symbol id="i-users" viewBox="0 0 24 24">
+      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+      <circle cx="9" cy="7" r="4" />
+      <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+    </symbol>
+    <symbol id="i-gift" viewBox="0 0 24 24">
+      <rect x="3" y="8" width="18" height="4" rx="1" />
+      <path
+        d="M12 8v13M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5" />
+    </symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10" />
+      <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20M2 12h20" />
+    </symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+    </symbol>
+    <symbol id="i-box" viewBox="0 0 24 24">
+      <path
+        d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+      <path d="m3.3 7 8.7 5 8.7-5M12 22V12" />
+    </symbol>
+    <symbol id="i-car" viewBox="0 0 24 24">
+      <path
+        d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2" />
+      <circle cx="7" cy="17" r="2" />
+      <path d="M9 17h6" />
+      <circle cx="17" cy="17" r="2" />
+    </symbol>
+    <symbol id="i-trophy" viewBox="0 0 24 24">
+      <path
+        d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6M18 9h1.5a2.5 2.5 0 0 0 0-5H18M4 22h16M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22M18 2H6v7a6 6 0 0 0 12 0V2Z" />
+    </symbol>
+    <symbol id="i-drama" viewBox="0 0 24 24">
+      <path d="M10 11h.01M14 6h.01M18 6h.01M6.5 13.1h.01M22 5c0 9-4 12-6 12s-6-3-6-12c0-2 2-3 6-3s6 1 6 3" />
+      <path d="M17.5 10.5c-.5.5-1.5.5-2 0M2 9.5v4c0 5 3.5 8 7 8 1.5 0 2.7-.5 3.7-1.3" />
+    </symbol>
+    <symbol id="i-flame" viewBox="0 0 24 24">
+      <path
+        d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14-.22-4.05 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.15.43-2.29 1-3a2.5 2.5 0 0 0 2.5 2.5z" />
+    </symbol>
+    <symbol id="i-sword" viewBox="0 0 24 24">
+      <path d="m14.5 17.5-11-11V3h3.5l11 11M13 19l6-6M16 16l4 4M19 21l2-2" />
+    </symbol>
+    <symbol id="i-pointer" viewBox="0 0 24 24">
+      <path d="m3 3 7.07 16.97 2.51-7.39 7.39-2.51L3 3z" />
+    </symbol>
+    <symbol id="i-stairs" viewBox="0 0 24 24">
+      <path d="M2 21h5v-6h5V9h5V3h5" />
+    </symbol>
+    <symbol id="i-building" viewBox="0 0 24 24">
+      <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" />
+      <path
+        d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2M10 6h4M10 10h4M10 14h4M10 18h4" />
+    </symbol>
+    <symbol id="i-clipboard" viewBox="0 0 24 24">
+      <rect width="8" height="4" x="8" y="2" rx="1" />
+      <path
+        d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2M12 11h4M12 16h4M8 11h.01M8 16h.01" />
+    </symbol>
+  </svg>
+  <div class="app">
+    <aside class="side">
+      <a class="brand" href="./" aria-label="GameSeeker, ir para o início">
+        <svg class="ic brand-ic" aria-hidden="true">
+          <use href="#i-gamepad" />
+        </svg>
+        <h1 class="logo">GAME<br />SEEKER</h1>
+      </a>
+      <nav class="nav" aria-label="Navegação principal">
+        <button id="nav-home" class="nav-item" type="button" aria-current="true">
+          <svg class="ic" aria-hidden="true">
+            <use href="#i-home" />
           </svg>
-          <h1 class="logo">GAME<br />SEEKER</h1>
+          Início
+        </button>
+        <button id="nav-fav" class="nav-item" type="button" aria-current="false">
+          <svg class="ic" aria-hidden="true">
+            <use href="#i-heart" />
+          </svg>
+          Favoritos
+        </button>
+        <a class="nav-item" href="#chips">
+          <svg class="ic" aria-hidden="true">
+            <use href="#i-grid" />
+          </svg>
+          Categorias
         </a>
-        <nav class="nav" aria-label="Navegação principal">
-          <button
-            id="nav-home"
-            class="nav-item"
-            type="button"
-            aria-current="true"
-          >
-            <svg class="ic" aria-hidden="true"><use href="#i-home" /></svg>
-            Início
-          </button>
-          <button
-            id="nav-fav"
-            class="nav-item"
-            type="button"
-            aria-current="false"
-          >
-            <svg class="ic" aria-hidden="true"><use href="#i-heart" /></svg>
-            Favoritos
-          </button>
-          <a class="nav-item" href="#chips">
-            <svg class="ic" aria-hidden="true"><use href="#i-grid" /></svg>
-            Categorias
-          </a>
-          <a class="nav-item" href="#sobre">
-            <svg class="ic" aria-hidden="true"><use href="#i-info" /></svg>
-            Sobre
-          </a>
-        </nav>
-        <div class="side-card">
-          <svg class="ic side-card-ic" aria-hidden="true">
-            <use href="#i-rocket" />
+        <a class="nav-item" href="#sobre">
+          <svg class="ic" aria-hidden="true">
+            <use href="#i-info" />
           </svg>
-          <h2>Descubra novos mundos!</h2>
-          <p>Encontre jogos que combinem com você.</p>
-          <svg class="ic side-card-pad" aria-hidden="true">
-            <use href="#i-gamepad" />
-          </svg>
+          Sobre
+        </a>
+      </nav>
+      <div class="side-card">
+        <svg class="ic side-card-ic" aria-hidden="true">
+          <use href="#i-rocket" />
+        </svg>
+        <h2>Descubra novos mundos!</h2>
+        <p>Encontre jogos que combinem com você.</p>
+        <svg class="ic side-card-pad" aria-hidden="true">
+          <use href="#i-gamepad" />
+        </svg>
+      </div>
+    </aside>
+    <div class="content">
+      <div class="bar">
+        <div class="bar-in">
+          <div class="row">
+            <div class="search">
+              <svg class="ic search-ic" aria-hidden="true">
+                <use href="#i-search" />
+              </svg>
+              <input id="q" type="search" placeholder="Buscar jogos, gêneros ou plataformas…"
+                aria-label="Buscar jogos" />
+            </div>
+            <select id="pf" aria-label="Filtrar por plataforma">
+              <option value="">Todas as plataformas</option>
+            </select>
+            <button id="theme" class="icon-btn" type="button" aria-label="Alternar tema">
+              🌙
+            </button>
+          </div>
         </div>
-      </aside>
-      <div class="content">
-        <div class="bar">
-          <div class="bar-in">
-            <div class="row">
-              <div class="search">
-                <svg class="ic search-ic" aria-hidden="true">
-                  <use href="#i-search" />
-                </svg>
-                <input
-                  id="q"
-                  type="search"
-                  placeholder="Buscar jogos, gêneros ou plataformas…"
-                  aria-label="Buscar jogos"
-                />
-              </div>
-              <select id="pf" aria-label="Filtrar por plataforma">
-                <option value="">Todas as plataformas</option>
+      </div>
+      <main>
+        <section class="hero" aria-roledescription="carousel" aria-label="Destaques">
+          <button id="hero-prev" class="hero-arrow" type="button" aria-label="Slide anterior">
+            ‹
+          </button>
+          <div class="hero-body">
+            <p class="hero-kicker">GAME SEEKER</p>
+            <h2 id="hero-title" class="hero-title"></h2>
+            <p id="hero-text" class="hero-text"></p>
+            <a class="hero-cta" href="#chips">▶ Explorar agora →</a>
+          </div>
+          <button id="hero-next" class="hero-arrow" type="button" aria-label="Próximo slide">
+            ›
+          </button>
+          <div id="hero-dots" class="hero-dots" role="group" aria-label="Escolher slide"></div>
+        </section>
+        <section class="filters" aria-labelledby="filters-title">
+          <div class="filters-head">
+            <h2 id="filters-title">
+              <svg class="ic" aria-hidden="true">
+                <use href="#i-filter" />
+              </svg>
+              Filtros rápidos
+            </h2>
+            <div class="actions">
+              <select id="sort" aria-label="Ordenar jogos">
+                <option value="">Ordem padrão</option>
+                <option value="nome">Nome (A-Z)</option>
+                <option value="novos">Mais recentes</option>
+                <option value="antigos">Mais antigos</option>
               </select>
-              <button
-                id="theme"
-                class="icon-btn"
-                type="button"
-                aria-label="Alternar tema"
-              >
-                🌙
+              <button id="clear" class="chip" type="button" hidden>
+                Limpar filtros
+              </button>
+              <button id="random" class="chip" type="button">
+                <svg class="ic" aria-hidden="true">
+                  <use href="#i-dice" />
+                </svg>
+                Surpreenda-me
               </button>
             </div>
           </div>
-        </div>
-        <main>
-          <section
-            class="hero"
-            aria-roledescription="carousel"
-            aria-label="Destaques"
-          >
-            <button
-              id="hero-prev"
-              class="hero-arrow"
-              type="button"
-              aria-label="Slide anterior"
-            >
-              ‹
-            </button>
-            <div class="hero-body">
-              <p class="hero-kicker">GAME SEEKER</p>
-              <h2 id="hero-title" class="hero-title"></h2>
-              <p id="hero-text" class="hero-text"></p>
-              <a class="hero-cta" href="#chips">▶ Explorar agora →</a>
-            </div>
-            <button
-              id="hero-next"
-              class="hero-arrow"
-              type="button"
-              aria-label="Próximo slide"
-            >
-              ›
-            </button>
-            <div
-              id="hero-dots"
-              class="hero-dots"
-              role="group"
-              aria-label="Escolher slide"
-            ></div>
-          </section>
-          <section class="filters" aria-labelledby="filters-title">
-            <div class="filters-head">
-              <h2 id="filters-title">
-                <svg class="ic" aria-hidden="true">
-                  <use href="#i-filter" />
-                </svg>
-                Filtros rápidos
-              </h2>
-              <div class="actions">
-                <select id="sort" aria-label="Ordenar jogos">
-                  <option value="">Ordem padrão</option>
-                  <option value="nome">Nome (A-Z)</option>
-                  <option value="novos">Mais recentes</option>
-                  <option value="antigos">Mais antigos</option>
-                </select>
-                <button id="clear" class="chip" type="button" hidden>
-                  Limpar filtros
-                </button>
-                <button id="random" class="chip" type="button">
-                  <svg class="ic" aria-hidden="true">
-                    <use href="#i-dice" />
-                  </svg>
-                  Surpreenda-me
-                </button>
-              </div>
-            </div>
-            <div
-              class="chips collapsed"
-              id="chips"
-              role="group"
-              aria-label="Filtrar por gênero"
-            ></div>
-            <button
-              id="chips-more"
-              class="link-btn"
-              type="button"
-              aria-expanded="false"
-            >
-              Ver mais gêneros ▾
-            </button>
-          </section>
-          <section id="featured" class="featured" aria-labelledby="feat-title">
-            <div class="section-head">
-              <h2 id="feat-title" class="section-title">
-                <svg class="ic" aria-hidden="true"><use href="#i-star" /></svg>
-                Jogos em destaque
-              </h2>
-              <a id="see-all" class="link-btn" href="#all">Ver todos →</a>
-            </div>
-            <div id="feat-row" class="row-scroll"></div>
-          </section>
-          <div id="all" class="section-head">
-            <svg class="ic" aria-hidden="true"><use href="#i-library" /></svg>
-            Todos os jogos
+          <div class="chips collapsed" id="chips" role="group" aria-label="Filtrar por gênero"></div>
+          <button id="chips-more" class="link-btn" type="button" aria-expanded="false">
+            Ver mais gêneros ▾
+          </button>
+        </section>
+        <section id="featured" class="featured" aria-labelledby="feat-title">
+          <div class="section-head">
+            <h2 id="feat-title" class="section-title">
+              <svg class="ic" aria-hidden="true">
+                <use href="#i-star" />
+              </svg>
+              Jogos em destaque
+            </h2>
+            <a id="see-all" class="link-btn" href="#all">Ver todos →</a>
           </div>
-          <p class="count" id="count" aria-live="polite"></p>
-          <div class="grid" id="grid"></div>
-        </main>
-        <footer id="sobre">
-          GameSeeker · feito para descobrir seu próximo jogo
-        </footer>
-      </div>
+          <div id="feat-row" class="row-scroll"></div>
+        </section>
+        <div id="all" class="section-head">
+          <h2 class="section-title">
+            <svg class="ic" aria-hidden="true">
+              <use href="#i-library" />
+            </svg>
+            Todos os jogos
+          </h2>
+        </div>
+        <p class="count" id="count" aria-live="polite"></p>
+        <div class="grid" id="grid"></div>
+      </main>
+      <footer id="sobre">
+        GameSeeker · feito para descobrir seu próximo jogo
+      </footer>
     </div>
-    <dialog id="dlg">
-      <div id="dc"></div>
-    </dialog>
-    <script src="script.js"></script>
-  </body>
+  </div>
+  <dialog id="dlg">
+    <div id="dc"></div>
+  </dialog>
+  <script src="script.js"></script>
+</body>
+
 </html>

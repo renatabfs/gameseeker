@@ -592,7 +592,7 @@ footer {
       rgba(18, 10, 46, 0.95) 0%,
       rgba(18, 10, 46, 0.6) 45%,
       rgba(18, 10, 46, 0.1) 100%),
-    var(--hero-img, url("img/hero1.jpeg")) center right / cover no-repeat,
+    var(--hero-img, url("img/hero.jpeg")) center right / cover no-repeat,
     linear-gradient(135deg, #3a1470, var(--bg2));
   overflow: hidden;
   color: #efe8ff;
