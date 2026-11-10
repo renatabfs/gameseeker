@@ -943,3 +943,12 @@ footer {
   flex-wrap: wrap;
   gap: 8px;
 }
+.more-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+#more {
+  padding: 10px 24px;
+}

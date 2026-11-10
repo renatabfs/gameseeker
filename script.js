@@ -46,6 +46,9 @@ function clearFilters() {
 }
 let current = null;
 let last = -1;
+const PAGE = 12;
+let shown = PAGE;
+let lastKey = "";
 function surprise() {
   if (!G.length) return;
   let i;
@@ -301,19 +304,25 @@ function render() {
   );
   const so = $("sort").value;
   if (sorters[so]) L.sort(sorters[so]);
+  const key = [...gens].join(",") + "|" + pf + "|" + q + "|" + so;
+  if (key !== lastKey) {
+    shown = PAGE;
+    lastKey = key;
+  }
   $("count").textContent =
     L.length + (L.length === 1 ? " jogo encontrado" : " jogos encontrados");
   const gr = $("grid");
   gr.innerHTML = "";
+  $("more").hidden = true;
   if (!L.length) {
     gr.innerHTML =
       '<div class="empty"><p>Nenhum jogo encontrado. Tente outro termo ou limpe os filtros.</p><button class="chip" id="clear2" type="button">Limpar filtros</button></div>';
     $("clear2").onclick = clearFilters;
     return;
   }
-  L.forEach((g) => {
-    gr.appendChild(makeCard(g));
-  });
+  L.slice(0, shown).forEach((g) => gr.appendChild(makeCard(g)));
+  $("more").hidden = L.length <= shown;
+  $("more").textContent = `Carregar mais (${L.length - shown} restantes)`;
 }
 
 function related(g) {
@@ -392,6 +401,10 @@ window.addEventListener("popstate", () => {
   else if ($("dlg").open) $("dlg").close();
 });
 $("clear").onclick = clearFilters;
+$("more").onclick = () => {
+  shown += PAGE;
+  render();
+};
 $("random").onclick = surprise;
 $("nav-home").onclick = clearFilters;
 $("nav-fav").onclick = () => {
