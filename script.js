@@ -21,6 +21,7 @@ function writeURL(push) {
   if ($("pf").value) p.set("plataforma", $("pf").value);
   if ($("q").value.trim()) p.set("busca", $("q").value.trim());
   if ($("sort").value) p.set("ordem", $("sort").value);
+  if (current) p.set("jogo", current.n);
   const qs = p.toString();
   const url = qs ? "?" + qs : location.pathname;
   push ? history.pushState(null, "", url) : history.replaceState(null, "", url);
@@ -43,7 +44,7 @@ function clearFilters() {
   render();
   writeURL(true);
 }
-
+let current = null;
 let last = -1;
 function surprise() {
   if (!G.length) return;
@@ -213,6 +214,9 @@ async function init() {
   });
 
   render();
+  const j = new URLSearchParams(location.search).get("jogo");
+  const g = G.find((x) => x.n === j);
+  if (g) open(g, true);
 }
 function saveFav() {
   try {
@@ -332,7 +336,9 @@ function relatedHTML(g) {
     .join("")}</div></div>`;
 }
 
-function open(g) {
+function open(g, silent) {
+  const wasOpen = $("dlg").open;
+  current = g;
   $("dc").innerHTML = `<div class="cover" style="--h:${g.h}">${art(
     g
   )}<button class="close" aria-label="Fechar">✕</button></div>
@@ -354,10 +360,15 @@ function open(g) {
     toggleFav(g.n);
     open(g);
   };
-  if (!$("dlg").open) $("dlg").showModal();
+  if (!wasOpen) $("dlg").showModal();
+  if (!silent) writeURL(!wasOpen);
 }
 $("dlg").addEventListener("click", (e) => {
   if (e.target === $("dlg")) $("dlg").close();
+});
+$("dlg").addEventListener("close", () => {
+  current = null;
+  writeURL(false);
 });
 $("q").oninput = () => {
   render();
@@ -375,6 +386,10 @@ window.addEventListener("popstate", () => {
   readURL();
   syncChips();
   render();
+  const j = new URLSearchParams(location.search).get("jogo");
+  const g = G.find((x) => x.n === j);
+  if (g) open(g, true);
+  else if ($("dlg").open) $("dlg").close();
 });
 $("clear").onclick = clearFilters;
 $("random").onclick = surprise;
