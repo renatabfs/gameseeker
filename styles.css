@@ -286,9 +286,9 @@ main {
 }
 
 .card {
-  background: var(--card);
-  border: 2px solid var(--line);
-  border-radius: 14px;
+  background: #1d0a4a;
+  border: 1px solid var(--line);
+  border-radius: 16px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -355,9 +355,7 @@ main {
 
 .body h3 {
   margin: 0;
-  font-family: "Orbitron", system-ui, sans-serif;
-  font-size: 17px;
-  line-height: 1.25;
+  font: 700 18px/1.25 "Rubik", system-ui, sans-serif;
 }
 
 .meta {
@@ -379,12 +377,12 @@ main {
 }
 
 .card .plat {
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
 }
 
 .card .pl {
   font-size: 11px;
-  padding: 2px 6px;
+  padding: 3px 9px;
   white-space: nowrap;
 }
 
@@ -400,8 +398,9 @@ main {
   font-size: 12px;
   border: 1px solid var(--cyan);
   color: var(--cyan);
-  border-radius: 6px;
-  padding: 2px 8px;
+  border-radius: 99px;
+  padding: 3px 10px;
+  background: rgba(38, 205, 235, 0.08);
 }
 
 .empty {
@@ -1023,4 +1022,8 @@ footer {
   .hero {
     height: 300px;
   }
+}
+
+.card .cover {
+  aspect-ratio: 1.9;
 }
