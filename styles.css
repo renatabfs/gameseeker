@@ -584,7 +584,7 @@ footer {
   display: flex;
   align-items: center;
   min-height: 260px;
-  padding: 32px 70px;
+  padding: 24px 70px;
   margin-bottom: 20px;
   border: 2px solid var(--line);
   border-radius: 20px;
@@ -608,7 +608,7 @@ footer {
   margin: 6px 0 10px;
   font: 900 clamp(26px, 4vw, 42px) "Rubik", system-ui, sans-serif;
   line-height: 1.1;
-  max-width: 16ch;
+  max-width: 22ch;
 }
 
 .hero-title span {
@@ -617,7 +617,7 @@ footer {
 
 .hero-text {
   margin: 0 0 18px;
-  max-width: 40ch;
+  max-width: 56ch;
 }
 
 .hero-cta {
@@ -1017,4 +1017,10 @@ footer {
 @media (max-height: 800px) {
   .side-scene { max-width: 120px; }
   .brand { margin-bottom: 24px; }
+}
+
+@media (min-width: 601px) {
+  .hero {
+    height: 300px;
+  }
 }
