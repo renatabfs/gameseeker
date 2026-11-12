@@ -480,7 +480,8 @@ dialog .cover {
 footer {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 20px 16px 40px;
+  padding: 28px 16px 40px;
+  border-top: 1px solid var(--line);
   color: var(--mute);
   font-size: 13px;
 }
@@ -960,7 +961,14 @@ footer {
 }
 
 #more {
-  padding: 10px 24px;
+  padding: 12px 32px;
+  font-size: 15px;
+  border-color: #b43df0;
+}
+
+#more:hover {
+  background: linear-gradient(135deg, #7b2ff7, #b43df0);
+  color: #fff;
 }
 
 .pic {
@@ -1204,4 +1212,87 @@ footer {
 
 :root[data-theme="light"] .card {
   background: var(--card);
+}
+
+footer h2 {
+  margin: 0 0 8px;
+  font: 700 18px "Rubik", system-ui, sans-serif;
+  color: var(--text);
+}
+
+footer p {
+  margin: 0 0 12px;
+  max-width: 60ch;
+  font-size: 14px;
+}
+
+footer .copy {
+  margin: 18px 0 0;
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+.foot-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1.2fr;
+  gap: 32px;
+}
+
+footer h3 {
+  margin: 0 0 12px;
+  font: 700 15px "Rubik", system-ui, sans-serif;
+  color: var(--text);
+}
+
+.foot-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.foot-links li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.foot-links .ic {
+  color: var(--accent);
+}
+
+.foot-links a {
+  color: var(--mute);
+  text-decoration: none;
+}
+
+.foot-links a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.foot-links a:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.foot-bottom {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 28px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  font-size: 13px;
+}
+
+@media (max-width: 800px) {
+  .foot-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
 }

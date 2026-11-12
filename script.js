@@ -171,6 +171,7 @@ async function init() {
     const res = await fetch("games.json");
     if (!res.ok) throw new Error(res.status);
     G = await res.json();
+    $("total").textContent = G.length;
     readURL();
     const generos = [...new Set(G.flatMap((g) => g.t))];
     const validos = new Set([...generos, "Favoritos"]);

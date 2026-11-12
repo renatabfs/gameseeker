@@ -203,14 +203,19 @@
         d="M96 15C94 12 92 10 89 8C87 6 85 6 83 5C81 5 80 5 78 6C76 6 74 9 72 10C71 11 72 11 67 11C63 12 50 12 45 11C40 10 40 7 38 6C35 6 32 6 29 7C27 9 24 10 22 14C20 17 17 22 15 28C13 34 11 45 10 50C9 55 9 56 10 58C10 60 10 60 11 62C12 63 14 66 16 67C17 68 20 68 22 68C24 67 26 67 28 64C31 61 35 53 38 51C41 49 44 52 46 51C49 51 50 48 53 47C56 46 62 47 65 46C67 45 67 43 69 42C72 42 77 41 82 44C86 48 92 58 95 61C98 64 98 63 99 63C101 63 102 63 103 62C105 61 106 59 107 56C107 53 107 50 106 45C105 40 103 32 101 27C99 22 98 18 96 15Z" />
       <path fill="url(#g-pad)" stroke="#c27bff" stroke-width=".9" stroke-linejoin="round"
         d="M96 15C94 12 92 10 89 8C87 6 85 6 83 5C81 5 80 5 78 6C76 6 74 9 72 10C71 11 72 11 67 11C63 12 50 12 45 11C40 10 40 7 38 6C35 6 32 6 29 7C27 9 24 10 22 14C20 17 17 22 15 28C13 34 11 45 10 50C9 55 9 56 10 58C10 60 10 60 11 62C12 63 14 66 16 67C17 68 20 68 22 68C24 67 26 67 28 64C31 61 35 53 38 51C41 49 44 52 46 51C49 51 50 48 53 47C56 46 62 47 65 46C67 45 67 43 69 42C72 42 77 41 82 44C86 48 92 58 95 61C98 64 98 63 99 63C101 63 102 63 103 62C105 61 106 59 107 56C107 53 107 50 106 45C105 40 103 32 101 27C99 22 98 18 96 15Z" />
-      <path d="M80 9C90 8 98 12 101 20" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="1.6" stroke-linecap="round" />
-      <path d="M18 24C14 34 12 46 14 56" fill="none" stroke="#fff" stroke-opacity=".22" stroke-width="2" stroke-linecap="round" />
+      <path d="M80 9C90 8 98 12 101 20" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="1.6"
+        stroke-linecap="round" />
+      <path d="M18 24C14 34 12 46 14 56" fill="none" stroke="#fff" stroke-opacity=".22" stroke-width="2"
+        stroke-linecap="round" />
       <path d="M46 12H72L74 24H44Z" fill="#640ebc" stroke="#b266ed" stroke-width=".7" />
       <circle cx="59" cy="15" r="1.1" fill="#26f0ff" />
-      <path d="M30.2 15.5h5.2v5.3h5.3v5.2h-5.3v5.3h-5.2V26h-5.3v-5.2h5.3z" fill="#4a0690" stroke="#b266ed" stroke-width=".6" />
+      <path d="M30.2 15.5h5.2v5.3h5.3v5.2h-5.3v5.3h-5.2V26h-5.3v-5.2h5.3z" fill="#4a0690" stroke="#b266ed"
+        stroke-width=".6" />
       <g fill="#ecd9ff">
-        <circle cx="87" cy="14" r="2.7" /><circle cx="87" cy="26" r="2.7" />
-        <circle cx="81" cy="20" r="2.7" /><circle cx="93" cy="20" r="2.7" />
+        <circle cx="87" cy="14" r="2.7" />
+        <circle cx="87" cy="26" r="2.7" />
+        <circle cx="81" cy="20" r="2.7" />
+        <circle cx="93" cy="20" r="2.7" />
       </g>
       <circle cx="45" cy="34" r="7" fill="#250450" stroke="#b266ed" stroke-width="1" />
       <circle cx="45" cy="34" r="4.2" fill="#4a0a96" />
@@ -218,7 +223,7 @@
       <circle cx="74" cy="34" r="4.2" fill="#4a0a96" />
       <circle cx="59.5" cy="33" r="1.6" fill="#ecd9ff" />
     </symbol>
-    
+
     <symbol id="n-home" viewBox="0 0 24 24">
       <path d="M12 2.5 2 11h3v10h5.5v-6h3v6H19V11h3z" />
     </symbol>
@@ -390,7 +395,53 @@
         </div>
       </main>
       <footer id="sobre">
-        GameSeeker · feito para descobrir seu próximo jogo
+        <div class="foot-grid">
+          <div>
+            <h2>Sobre o GameSeeker</h2>
+            <p>
+              O GameSeeker ajuda você a descobrir seu próximo jogo. Busque por gênero
+              e plataforma, leia a sinopse, salve seus favoritos ou deixe o acaso
+              escolher com o botão Surpreenda-me.
+            </p>
+            <p><span id="total">0</span> jogos no catálogo.</p>
+          </div>
+          <div>
+            <h3>Navegue</h3>
+            <ul class="foot-links">
+              <li><a href="./">Início</a></li>
+              <li><a href="?genero=Favoritos">Favoritos</a></li>
+              <li><a href="#chips">Categorias</a></li>
+              <li><a href="#">Voltar ao topo ↑</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Como usar</h3>
+            <ul class="foot-links">
+              <li>
+                <svg class="ic" aria-hidden="true">
+                  <use href="#i-search" />
+                </svg>
+                Busque por nome, gênero ou plataforma
+              </li>
+              <li>
+                <svg class="ic" aria-hidden="true">
+                  <use href="#i-heart" />
+                </svg>
+                Favorite para jogar depois
+              </li>
+              <li>
+                <svg class="ic" aria-hidden="true">
+                  <use href="#i-dice" />
+                </svg>
+                Sem ideia? Clique em Surpreenda-me
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="foot-bottom">
+          <span>GameSeeker · feito para descobrir seu próximo jogo</span>
+          <span>Feito com HTML, CSS e JavaScript</span>
+        </div>
       </footer>
     </div>
   </div>
