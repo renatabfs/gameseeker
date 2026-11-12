@@ -190,7 +190,7 @@ header {
   background: var(--glass);
   backdrop-filter: blur(8px);
   padding: 12px 16px;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid transparent;
 }
 
 .bar-in {
@@ -212,9 +212,9 @@ select {
   font: inherit;
   color: var(--text);
   background: var(--bg2);
-  border: 2px solid var(--line);
+  border: 1px solid var(--line);
   border-radius: 10px;
-  padding: 10px 14px;
+  padding: 14px 18px;
   min-width: 0;
 }
 
@@ -522,14 +522,17 @@ footer {
 
 .row select {
   border-radius: 999px;
+  padding: 14px 22px;
+  font-weight: 500;
 }
 
 .icon-btn {
-  width: 46px;
-  height: 46px;
+  width: 50px;
+  height: 50px;
   flex: none;
   border-radius: 50%;
-  border: 2px solid var(--line);
+  border: 1px solid #b43df0;
+  box-shadow: 0 0 16px rgba(180, 61, 240, 0.55);
   background: var(--bg2);
   color: var(--text);
   font-size: 20px;
@@ -1192,4 +1195,9 @@ footer {
 
 .card .cover {
   aspect-ratio: 1.9;
+}
+
+.icon-btn .ic {
+  width: 22px;
+  height: 22px;
 }
