@@ -238,7 +238,7 @@ input:focus {
 
 .chips {
   display: flex;
-  gap: 8px;
+  gap: 10px;
   overflow-x: auto;
   padding-bottom: 4px;
   scrollbar-width: none;
@@ -246,12 +246,12 @@ input:focus {
 
 .chip {
   flex: none;
-  font: 500 13px "Rubik", system-ui, sans-serif;
+  font: 500 14px "Rubik", system-ui, sans-serif;
   color: var(--text);
   background: transparent;
-  border: 2px solid var(--line);
+  border: 1px solid var(--line);
   border-radius: 99px;
-  padding: 5px 12px;
+  padding: 9px 10px;
   cursor: pointer;
   transition: border-color 0.15s, background 0.15s;
 }
@@ -793,7 +793,10 @@ footer {
 }
 
 .filters {
-  padding: 0;
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.03);
 }
 
 #chips-more {
@@ -802,7 +805,7 @@ footer {
 
 @media (min-width: 768px) {
   .chips.collapsed {
-    max-height: 34px;
+    max-height: 46px;
     overflow: hidden;
   }
 

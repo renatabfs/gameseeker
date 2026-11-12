@@ -180,10 +180,13 @@ async function init() {
     return;
   }
 
+  const PRIORITY = ["Aventura", "Ação", "RPG", "Estratégia", "FPS", "Indie", "Multiplayer"];
+  const rest = [...new Set(G.flatMap((g) => g.t))].sort();
   const tags = [
     "Todos",
     "Favoritos",
-    ...[...new Set(G.flatMap((g) => g.t))].sort(),
+    ...PRIORITY.filter((t) => rest.includes(t)),
+    ...rest.filter((t) => !PRIORITY.includes(t)),
   ];
   const plats = [...new Set(G.flatMap((g) => g.p))];
   plats.forEach((p) => {
