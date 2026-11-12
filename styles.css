@@ -415,14 +415,14 @@ main {
 }
 
 dialog {
-  border: 2px solid var(--pink);
+  border: 1px solid #b43df0;
   border-radius: 16px;
   background: var(--bg2);
   color: var(--text);
   padding: 0;
   max-width: min(520px, calc(100vw - 24px));
   width: 100%;
-  box-shadow: 0 0 40px rgba(255, 46, 147, 0.4);
+  box-shadow: 0 0 40px rgba(180, 61, 240, 0.4);
 }
 
 dialog::backdrop {
@@ -442,13 +442,12 @@ dialog .cover {
 
 .dbody h2 {
   margin: 0;
-  font-family: "Orbitron", system-ui, sans-serif;
-  font-size: 22px;
+  font: 700 24px/1.2 "Rubik", system-ui, sans-serif;
 }
 
 .dbody h4 {
   margin: 0 0 6px;
-  color: var(--gold);
+  color: var(--accent);
   font-size: 14px;
 }
 
