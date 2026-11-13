@@ -1456,3 +1456,26 @@ select {
 :root[data-theme="light"] dialog {
   background: rgba(255, 255, 255, 0.9);
 }
+
+.side {
+  z-index: 6;
+  background:
+    radial-gradient(240px 170px at 50% 80px, rgba(150, 40, 230, 0.38), transparent 72%),
+    radial-gradient(260px 240px at 50% 100%, rgba(123, 47, 247, 0.3), transparent 72%),
+    linear-gradient(180deg, rgba(26, 13, 70, 0.72), rgba(10, 4, 28, 0.72));
+  border-right: 1px solid rgba(180, 61, 240, 0.4);
+  box-shadow: 2px 0 26px rgba(150, 30, 220, 0.28);
+}
+
+:root[data-theme="light"] .side {
+  box-shadow: none;
+}
+
+.hero-dot {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.card {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
